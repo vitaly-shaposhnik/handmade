@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * OrderProduct
  *
- * @ORM\Table()
+ * @ORM\Table("order_product")
  * @ORM\Entity
  */
 class OrderProduct
@@ -21,14 +21,6 @@ class OrderProduct
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantity", type="integer")
-     * @Assert\NotBlank()
-     */
-    private $quantity;
 
     /**
      * @var integer
@@ -46,6 +38,13 @@ class OrderProduct
      */
     private $product_id;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantity", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $quantity;
 
     /**
      * Get id

@@ -42,14 +42,14 @@ class Category
      *
      * @ORM\Column(name="parent_id", type="integer")
      */
-    private $parent_id;
+    private $parent_id = 0;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="root_id", type="integer")
      */
-    private $root_id;
+    private $root_id = 0;
 
     /**
      * @var integer
@@ -173,14 +173,6 @@ class Category
     public function getRootId()
     {
         return $this->root_id;
-    }
-
-    /**
-     * @param mixed $product
-     */
-    public function setProduct($product)
-    {
-        $this->product = $product;
     }
 
     /**

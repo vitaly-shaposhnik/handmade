@@ -74,16 +74,11 @@ class Product
     private $active = 1;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * @var integer
+     *
+     * @ORM\Column(name="image_id", type="integer")
      */
-    private $images;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Image", mappedBy="product")
-     * @ORM\JoinColumn(name="main_image_id", referencedColumnName="id")
-     */
-    private $main_image;
+    private $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
@@ -262,35 +257,19 @@ class Product
     }
 
     /**
-     * @param mixed $images
+     * @param mixed $image
      */
-    public function setImages($images)
+    public function setImage($image)
     {
-        $this->image = $images;
+        $this->image = $image;
     }
 
     /**
      * @return mixed
      */
-    public function getImages()
+    public function getImage()
     {
-        return $this->images;
-    }
-
-    /**
-     * @param mixed $main_image
-     */
-    public function setMainImage($main_image)
-    {
-        $this->main_image = $main_image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMainImage()
-    {
-        return $this->main_image;
+        return $this->image;
     }
 
     /**

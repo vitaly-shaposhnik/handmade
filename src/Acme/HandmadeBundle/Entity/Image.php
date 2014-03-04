@@ -31,14 +31,6 @@ class Image
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="path", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $path;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="active", type="integer")
@@ -46,9 +38,18 @@ class Image
     private $active = 1;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images")
+     * @Assert\File(maxSize=6000000)
      */
-    protected $product;
+    public $imageFile;
+
+    public $removeImage = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", nullable=true, type="string", length=255)
+     */
+    private $image;
 
 
     /**
@@ -85,29 +86,6 @@ class Image
     }
 
     /**
-     * Set path
-     *
-     * @param string $path
-     * @return Image
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
      * Set active
      *
      * @param integer $active
@@ -131,18 +109,55 @@ class Image
     }
 
     /**
-     * @param mixed $product
+     * @param string $image
      */
-    public function setProduct($product)
+    public function setImage($image)
     {
-        $this->product = $product;
+        $this->image = $image;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getProduct()
+    public function getImage()
     {
-        return $this->product;
+        return $this->image;
+    }
+
+    static public function getImagesPath($absolute = false)
+    {
+        $path = '';
+        if ($absolute) {
+            $path = realpath(__DIR__.'/../../../../web').'/';
+        }
+
+        return $path . 'uploads/cards';
+    }
+
+    public function evaluateUpload()
+    {
+        if (($oldImage = $this->getImage()) && $this->removeImage) {
+            unlink($oldImage);
+            $this->setImage($oldImage = null);
+        }
+
+        if (null === $this->imageFile) {
+            return;
+        }
+
+        // remove old image
+        if ($oldImage) {
+            unlink($oldImage);
+        }
+
+        $imagesPath = $this->getImagesPath(true);
+        if (!is_dir($imagesPath)) {
+            mkdir($imagesPath, 0777, true);
+        }
+
+        $imageName = md5(uniqid().$this->getName()).'.'.$this->imageFile->guessExtension();
+
+        $this->imageFile->move($imagesPath, $imageName);
+        $this->setImage($imageName);
     }
 }

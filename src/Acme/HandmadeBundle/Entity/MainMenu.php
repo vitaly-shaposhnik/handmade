@@ -29,6 +29,13 @@ class MainMenu
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="weight", type="integer")
@@ -120,5 +127,21 @@ class MainMenu
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

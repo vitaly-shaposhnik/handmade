@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product
  *
- * @ORM\Table()
+ * @ORM\Table("product")
  * @ORM\Entity
  */
 class Product
@@ -68,8 +68,29 @@ class Product
      *
      * @ORM\Column(name="active", type="integer")
      */
-    private $active;
+    private $active = 1;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $images;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Image", mappedBy="product")
+     * @ORM\JoinColumn(name="main_image_id", referencedColumnName="id")
+     */
+    private $main_image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="OrderEntity", mappedBy="products")
+     */
+    protected $order;
 
     /**
      * Get id
@@ -240,5 +261,69 @@ class Product
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param mixed $images
+     */
+    public function setImages($images)
+    {
+        $this->image = $images;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $main_image
+     */
+    public function setMainImage($main_image)
+    {
+        $this->main_image = $main_image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMainImage()
+    {
+        return $this->main_image;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

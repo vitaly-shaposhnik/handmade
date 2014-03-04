@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Image
  *
- * @ORM\Table()
+ * @ORM\Table("image")
  * @ORM\Entity
  */
 class Image
@@ -40,7 +40,12 @@ class Image
      *
      * @ORM\Column(name="active", type="integer")
      */
-    private $active;
+    private $active = 1;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images")
+     */
+    protected $product;
 
 
     /**
@@ -120,5 +125,21 @@ class Image
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

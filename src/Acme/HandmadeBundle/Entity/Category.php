@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Category
  *
- * @ORM\Table()
+ * @ORM\Table("category")
  * @ORM\Entity
  */
 class Category
@@ -38,10 +38,29 @@ class Category
     /**
      * @var integer
      *
+     * @ORM\Column(name="parent_id", type="integer")
+     */
+    private $parent_id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="root_id", type="integer")
+     */
+    private $root_id;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="active", type="integer")
      */
-    private $active;
+    private $active = 1;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    private $product;
 
     /**
      * Get id
@@ -120,5 +139,53 @@ class Category
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param int $parent_id
+     */
+    public function setParentId($parent_id)
+    {
+        $this->parent_id = $parent_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParentId()
+    {
+        return $this->parent_id;
+    }
+
+    /**
+     * @param int $root_id
+     */
+    public function setRootId($root_id)
+    {
+        $this->root_id = $root_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRootId()
+    {
+        return $this->root_id;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

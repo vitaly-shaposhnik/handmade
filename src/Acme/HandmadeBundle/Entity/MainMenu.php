@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MainMenu
  *
- * @ORM\Table()
+ * @ORM\Table("main_menu")
  * @ORM\Entity
  */
 class MainMenu
@@ -40,7 +40,7 @@ class MainMenu
      *
      * @ORM\Column(name="active", type="integer")
      */
-    private $active;
+    private $active = 1;
 
 
     /**

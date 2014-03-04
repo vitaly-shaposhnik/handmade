@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OrderStatus
  *
- * @ORM\Table()
+ * @ORM\Table("order_status")
  * @ORM\Entity
  */
 class OrderStatus
@@ -28,6 +28,12 @@ class OrderStatus
      */
     private $name;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="active", type="integer")
+     */
+    private $active = 1;
 
     /**
      * Get id
@@ -60,5 +66,21 @@ class OrderStatus
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param int $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return int
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

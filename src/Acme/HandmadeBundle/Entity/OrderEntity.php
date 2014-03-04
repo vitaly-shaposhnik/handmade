@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OrderEntity
  *
- * @ORM\Table()
+ * @ORM\Table("order_entity")
  * @ORM\Entity
  */
 class OrderEntity
@@ -28,6 +28,17 @@ class OrderEntity
      */
     private $uid;
 
+    /**
+     * @ORM\OneToOne(targetEntity="OrderStatus")
+     * @ORM\JoinColumn(name="order_status_id", referencedColumnName="id")
+     */
+    private $order_status;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Product", cascade={"persist"}, inversedBy="order")
+     * @ORM\JoinTable(name="order_product")
+     **/
+    private $products;
 
     /**
      * Get id
@@ -60,5 +71,37 @@ class OrderEntity
     public function getUid()
     {
         return $this->uid;
+    }
+
+    /**
+     * @param mixed $order_status
+     */
+    public function setOrderStatus($order_status)
+    {
+        $this->order_status = $order_status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderStatus()
+    {
+        return $this->order_status;
+    }
+
+    /**
+     * @param mixed $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

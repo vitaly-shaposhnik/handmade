@@ -3,6 +3,7 @@
 namespace Acme\HandmadeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * OrderEntity
@@ -25,6 +26,7 @@ class OrderEntity
      * @var integer
      *
      * @ORM\Column(name="uid", type="integer")
+     * @Assert\NotBlank()
      */
     private $uid;
 
@@ -33,12 +35,6 @@ class OrderEntity
      * @ORM\JoinColumn(name="order_status_id", referencedColumnName="id")
      */
     private $order_status;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Product", cascade={"persist"}, inversedBy="order")
-     * @ORM\JoinTable(name="order_product")
-     **/
-    private $products;
 
     /**
      * Get id
@@ -87,21 +83,5 @@ class OrderEntity
     public function getOrderStatus()
     {
         return $this->order_status;
-    }
-
-    /**
-     * @param mixed $products
-     */
-    public function setProducts($products)
-    {
-        $this->products = $products;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProducts()
-    {
-        return $this->products;
     }
 }

@@ -3,6 +3,7 @@
 namespace Acme\HandmadeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -25,6 +26,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -53,6 +55,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="sku", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $sku;
 
@@ -86,11 +89,6 @@ class Product
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
      */
     private $category;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="OrderEntity", mappedBy="products")
-     */
-    protected $order;
 
     /**
      * Get id
@@ -277,22 +275,6 @@ class Product
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * @param mixed $order
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOrder()
-    {
-        return $this->order;
     }
 
     /**

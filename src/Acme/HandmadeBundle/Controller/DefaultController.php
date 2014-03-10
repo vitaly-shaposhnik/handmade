@@ -8,6 +8,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AcmeHandmadeBundle:Default:index.html.twig');
+        $response =  $this->render('AcmeHandmadeBundle:Default:index.html.twig');
+        $response->setSharedMaxAge(600);
+
+        return $response;
     }
 }

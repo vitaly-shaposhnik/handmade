@@ -22,12 +22,15 @@ class ProductController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('AcmeHandmadeBundle:Product')->findAll();
 
-        return $this->render('AcmeHandmadeBundle:Product:index.html.twig', array(
+        $response = $this->render('AcmeHandmadeBundle:Product:index.html.twig', array(
             'entities' => $entities,
         ));
+
+        $response->setSharedMaxAge(600);
+
+        return $response;
     }
     /**
      * Creates a new Product entity.

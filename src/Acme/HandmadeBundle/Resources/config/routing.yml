@@ -1,3 +1,11 @@
 acme_handmade_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: AcmeHandmadeBundle:Default:index }
+
+AcmeHandmadeBundle_category:
+    resource: "@AcmeHandmadeBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+AcmeHandmadeBundle_product:
+    resource: "@AcmeHandmadeBundle/Resources/config/routing/product.yml"
+    prefix:   /product

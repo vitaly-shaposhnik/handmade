@@ -1,1 +1,7 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Main page</h1>
+
+    {{ render_esi(url('product', {})) }}
+{% endblock %}

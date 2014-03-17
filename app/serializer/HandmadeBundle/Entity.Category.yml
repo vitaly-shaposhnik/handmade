@@ -1,0 +1,7 @@
+Acme\HandmadeBundle\Entity\Category:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        name:
+            expose: true

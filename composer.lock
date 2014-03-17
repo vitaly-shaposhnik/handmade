@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d4c3859944fa97fdeac49660b63b4a3a",
+    "hash": "862d9b827e66231582e31af6aac1700b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -495,12 +495,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "351bcc4de9ff58bac8d72bb3ef0b7481377bb25e"
+                "reference": "ccd69d9ec90013955a412a21125672afc09738dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/351bcc4de9ff58bac8d72bb3ef0b7481377bb25e",
-                "reference": "351bcc4de9ff58bac8d72bb3ef0b7481377bb25e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/ccd69d9ec90013955a412a21125672afc09738dc",
+                "reference": "ccd69d9ec90013955a412a21125672afc09738dc",
                 "shasum": ""
             },
             "require": {
@@ -546,7 +546,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2014-02-22 15:01:12"
+            "time": "2014-03-05 01:11:31"
         },
         {
             "name": "doctrine/inflector",
@@ -747,12 +747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "815055bcb1936a0bba0af93cf1b44fddf98a64b5"
+                "reference": "9b8bbbcf50620f7c8af9c7588d9fe29247c2fa42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/815055bcb1936a0bba0af93cf1b44fddf98a64b5",
-                "reference": "815055bcb1936a0bba0af93cf1b44fddf98a64b5",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/9b8bbbcf50620f7c8af9c7588d9fe29247c2fa42",
+                "reference": "9b8bbbcf50620f7c8af9c7588d9fe29247c2fa42",
                 "shasum": ""
             },
             "require": {
@@ -807,7 +807,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-02-21 12:52:40"
+            "time": "2014-03-16 19:14:47"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1281,6 +1281,42 @@
             "time": "2012-12-21 11:40:51"
         },
         {
+            "name": "semantic/ui",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Semantic-Org/Semantic-UI.git",
+                "reference": "fadcea7e065df21fac6c0b5851bc2985d6e160ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Semantic-Org/Semantic-UI/zipball/fadcea7e065df21fac6c0b5851bc2985d6e160ed",
+                "reference": "fadcea7e065df21fac6c0b5851bc2985d6e160ed",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Lukic",
+                    "email": "jacklukic@gmail.com",
+                    "role": "Creator"
+                }
+            ],
+            "description": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+            "homepage": "http://www.semantic-ui.com",
+            "keywords": [
+                "css",
+                "framework",
+                "semantic",
+                "ui"
+            ],
+            "time": "2014-03-14 22:23:35"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v2.3.4",
             "target-dir": "Sensio/Bundle/DistributionBundle",
@@ -1441,12 +1477,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "6f3780145479312b258c9630fa5900e6e89b335f"
+                "reference": "4575c0ba3c7fd6b18e56401e720e825f5144fd80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/6f3780145479312b258c9630fa5900e6e89b335f",
-                "reference": "6f3780145479312b258c9630fa5900e6e89b335f",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/4575c0ba3c7fd6b18e56401e720e825f5144fd80",
+                "reference": "4575c0ba3c7fd6b18e56401e720e825f5144fd80",
                 "shasum": ""
             },
             "require": {
@@ -1513,7 +1549,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-02-28 15:05:32"
+            "time": "2014-03-17 18:15:32"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1645,12 +1681,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "460b632a4e9e9c6a221a24f291c2b3da31b2fdce"
+                "reference": "e5d33f55ce877a648add0fb221411a0251074b89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/460b632a4e9e9c6a221a24f291c2b3da31b2fdce",
-                "reference": "460b632a4e9e9c6a221a24f291c2b3da31b2fdce",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/e5d33f55ce877a648add0fb221411a0251074b89",
+                "reference": "e5d33f55ce877a648add0fb221411a0251074b89",
                 "shasum": ""
             },
             "require": {
@@ -1699,7 +1735,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2014-02-28 16:14:21"
+            "time": "2014-03-12 18:56:01"
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
@@ -1707,12 +1743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "fc116f42f2c31e6e2b874060f9984e71883f4278"
+                "reference": "ec1949a98c1dddf79533db0b272f9573ad6e63ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/fc116f42f2c31e6e2b874060f9984e71883f4278",
-                "reference": "fc116f42f2c31e6e2b874060f9984e71883f4278",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/ec1949a98c1dddf79533db0b272f9573ad6e63ac",
+                "reference": "ec1949a98c1dddf79533db0b272f9573ad6e63ac",
                 "shasum": ""
             },
             "require": {
@@ -1767,7 +1803,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2014-02-28 16:17:48"
+            "time": "2014-03-08 23:55:34"
         },
         {
             "name": "sonata-project/exporter",
@@ -2451,7 +2487,8 @@
         "sonata-project/admin-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
-        "stof/doctrine-extensions-bundle": 20
+        "stof/doctrine-extensions-bundle": 20,
+        "semantic/ui": 20
     },
     "platform": {
         "php": ">=5.3.3"

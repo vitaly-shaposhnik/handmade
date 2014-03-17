@@ -20,8 +20,18 @@ class LoadCategoryData implements FixtureInterface
         $manager->persist($category);
 
         $category = new Category();
-        $category->setName("Бонбоньерки");
+        $category->setName("Игрушки");
         $category->setWeight(2);
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName("Пригласительные");
+        $category->setWeight(3);
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName("Бонбоньерки");
+        $category->setWeight(4);
         $manager->persist($category);
 
         $manager->flush();

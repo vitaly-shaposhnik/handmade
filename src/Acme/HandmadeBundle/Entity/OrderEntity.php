@@ -4,6 +4,7 @@ namespace Acme\HandmadeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OrderEntity
@@ -35,6 +36,22 @@ class OrderEntity
      * @ORM\JoinColumn(name="order_status_id", referencedColumnName="id")
      */
     private $order_status;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var datetime $update
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     /**
      * Get id
@@ -83,5 +100,21 @@ class OrderEntity
     public function getOrderStatus()
     {
         return $this->order_status;
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

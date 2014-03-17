@@ -4,6 +4,7 @@ namespace Acme\HandmadeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Image
@@ -51,6 +52,21 @@ class Image
      */
     private $image;
 
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var datetime $update
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     /**
      * Get id
@@ -159,5 +175,21 @@ class Image
 
         $this->imageFile->move($imagesPath, $imageName);
         $this->setImage($imageName);
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

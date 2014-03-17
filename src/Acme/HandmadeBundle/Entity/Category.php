@@ -4,6 +4,7 @@ namespace Acme\HandmadeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Category
@@ -57,6 +58,22 @@ class Category
      * @ORM\Column(name="active", type="integer")
      */
     private $active = 1;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var datetime $update
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
@@ -181,5 +198,21 @@ class Category
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return \Acme\HandmadeBundle\Entity\datetime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

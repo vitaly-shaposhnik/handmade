@@ -9,3 +9,9 @@ AcmeHandmadeBundle_category:
 AcmeHandmadeBundle_product:
     resource: "@AcmeHandmadeBundle/Resources/config/routing/product.yml"
     prefix:   /product
+
+
+api_categories:
+    prefix: api/category
+    type: rest
+    resource: "Acme\HandmadeBundle\Controller\ApiController"

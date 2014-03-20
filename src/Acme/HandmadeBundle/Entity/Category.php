@@ -53,11 +53,11 @@ class Category
     private $root_id = 0;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="active", type="integer")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $active = 1;
+    private $active = true;
 
     /**
      * @var datetime $created
@@ -140,12 +140,12 @@ class Category
     /**
      * Set active
      *
-     * @param integer $active
+     * @param boolean $active
      * @return Category
      */
     public function setActive($active)
     {
-        $this->active = $active;
+        $this->active = (bool)$active;
 
         return $this;
     }
@@ -153,7 +153,7 @@ class Category
     /**
      * Get active
      *
-     * @return integer 
+     * @return boolean
      */
     public function getActive()
     {

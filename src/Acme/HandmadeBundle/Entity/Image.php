@@ -32,11 +32,11 @@ class Image
     private $name;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="active", type="integer")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $active = 1;
+    private $active = true;
 
     /**
      * @Assert\File(maxSize=6000000)
@@ -104,12 +104,12 @@ class Image
     /**
      * Set active
      *
-     * @param integer $active
+     * @param boolean $active
      * @return Image
      */
     public function setActive($active)
     {
-        $this->active = $active;
+        $this->active = (bool)$active;
 
         return $this;
     }
@@ -117,7 +117,7 @@ class Image
     /**
      * Get active
      *
-     * @return integer 
+     * @return boolean
      */
     public function getActive()
     {

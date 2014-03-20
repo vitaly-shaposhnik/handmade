@@ -31,11 +31,11 @@ class OrderStatus
     private $name;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="active", type="integer")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $active = 1;
+    private $active = true;
 
     /**
      * Get id
@@ -71,15 +71,15 @@ class OrderStatus
     }
 
     /**
-     * @param int $active
+     * @param boolean $active
      */
     public function setActive($active)
     {
-        $this->active = $active;
+        $this->active = (bool)$active;
     }
 
     /**
-     * @return int
+     * @return boolean
      */
     public function getActive()
     {

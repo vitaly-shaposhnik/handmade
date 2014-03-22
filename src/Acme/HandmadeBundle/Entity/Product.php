@@ -82,7 +82,8 @@ class Product
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 

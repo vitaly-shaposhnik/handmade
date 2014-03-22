@@ -23,7 +23,7 @@ class LoadProductData implements FixtureInterface
         $product->setName('Открытка 1');
         $product->setCategory($category);
         $product->setDescription("описание");
-        $product->setImage(1);
+//        $product->setImage(1);
         $product->setPrice(1000);
         $product->setSku('12321323424');
         $product->setAnnotation('аннотация');

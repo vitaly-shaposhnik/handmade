@@ -17,15 +17,31 @@ class ProductAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // get the current Image instance
+        /** @var $product Product */
+        $product = $this->getSubject();
+        $image = $product->getImage();
+
+        // use $fileFieldOptions so we can add other options to the field
+        $fileFieldOptions = array('required' => false);
+        if ($image && $image->getImage() && ($webPath = $image->getWebPath())) {
+            // get the container so the full path to the image can be set
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            // add a 'help' option containing the preview's img tag
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="preview" />';
+        }
+
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
             ->add('annotation', 'textarea', array(
                 'label' => 'Аннотация',
-                'required' => false,
+//                'required' => false,
             ))
             ->add('description', 'textarea', array(
                 'label' => 'Описание',
-                'required' => false,
+//                'required' => false,
             ))
             ->add('price', 'money', array(
                 'label' => 'Цена',
@@ -39,7 +55,7 @@ class ProductAdmin extends Admin
 //            ->add('image', 'entity', array(
 //                'label' => 'Image',
 //                'class' => 'AcmeHandmadeBundle:Image',
-//                'property' => 'name',
+//                'property' => 'image',
 //            ))
 //            ->add('image', 'collection', array(
 //                'type' => 'file',//new Image(),
@@ -48,7 +64,7 @@ class ProductAdmin extends Admin
 //                'allow_delete' => true,
 //                'prototype' => true
 //            ))
-            ->add('imageBuffer', 'file')
+            ->add('imageBuffer', 'file', $fileFieldOptions)
             ->add('sku', 'text', array('label' => 'SKU'))
             ->add('quantity', 'integer', array('label' => 'Количество'))
             ->add('active', 'checkbox', array(
@@ -75,6 +91,8 @@ class ProductAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+//            ->add('image', 'image')
+            ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
             ->add('price')
             ->add('sku')
             ->add('quantity')
@@ -85,11 +103,29 @@ class ProductAdmin extends Admin
     }
 
     /**
-     * @param $image Image
+     * @param $product Product
      */
     public function preUpdate($product)
     {
-        //$image->evaluateUpload();
+        $needPersist = false;
+        if (!$product->getImage()) {
+            $image = new Image();
+            $needPersist = true;
+        } else {
+            $image = $product->getImage();
+        }
+
+        $image->setName($product->getName());
+        $image->setActive(true);
+        $image->setImageFile($product->getImageBuffer());
+        $image->evaluateUpload();
+
+        if ($needPersist) {
+            $em = $this->getEntityManager();
+            $em->persist($image);
+        }
+
+        $product->setImage($image);
     }
 
     /**
@@ -98,16 +134,13 @@ class ProductAdmin extends Admin
     public function prePersist($product)
     {
         $image = new Image();
-        $image
-            ->setName($product->getName())
-            ->setActive(true)
-            ->setImageFile($product->getImageBuffer())
-        ;
+        $image->setName($product->getName());
+        $image->setActive(true);
+        $image->setImageFile($product->getImageBuffer());
         $image->evaluateUpload();
 
         $em = $this->getEntityManager();
         $em->persist($image);
-        $em->flush($image);
 
         $product->setImage($image);
     }

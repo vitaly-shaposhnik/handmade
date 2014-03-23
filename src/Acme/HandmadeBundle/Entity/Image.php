@@ -231,4 +231,9 @@ class Image
     {
         return $this->imageFile;
     }
+
+    public function __toString()
+    {
+        return $this->image;
+    }
 }

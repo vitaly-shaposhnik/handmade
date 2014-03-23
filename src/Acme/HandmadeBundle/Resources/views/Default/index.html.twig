@@ -1,7 +1,80 @@
-{% extends '::base.html.twig' %}
+{% extends 'AcmeHandmadeBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>Main page</h1>
+    {# body #}
+    <div class="ui inverted page grid stackable relaxed feature segment" style="padding-top:0; padding-bottom:0; height: 310px;">
+        <div class="row">
+            <div id="slider" data-slides='[{"imgUrl":"images/slides/img-1.jpg","title":"Слайд1","linkUrl":"/"},{"imgUrl":"images/slides/img-2.jpg","title":"Слайд2","linkUrl":"/"},{"imgUrl":"images/slides/img-3.jpg","title":"Слайд3","linkUrl":"/"},{"imgUrl":"images/slides/img-4.jpg","title":"Слайд4","linkUrl":"/"},{"imgUrl":"images/slides/img-5.jpg","title":"Слайд5","linkUrl":"/"},{"imgUrl":"images/slides/img-6.jpg","title":"Слайд6","linkUrl":"/"}]'>
+                <div class="catalogSlider">
+                    <a href="#" class="slider_eArrow mArLeft"><i class="left arrow icon"></i></a>
+                    <a href="#" class="slider_eArrow mArRight"><i class="right arrow icon"></i></a>
+                    <div class="sliderWrap clearfix"></div>
+                </div>
+            </div>
 
-    {{ render_esi(url('product', {})) }}
+
+        </div>
+    </div>
+
+    <div class="ui page grid overview segment">
+        <div class="row">
+            <div class="column">
+                <h1 class="center aligned ui header">Наши товары </h1>
+                <div class="ui horizontal divider"><i class="heart icon"></i></div>
+            </div>
+        </div>
+
+        <div class="ui two wide column"></div>
+        <div class="twelve wide column">
+            <div class="ui three column center aligned stackable divided grid">
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img1.jpg') }}" class="ui image">
+                        Открытка #1
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">30UAH <i class="right long cart icon"></i></a></p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img2.jpg') }}" class="ui image">
+                        Открытка #2
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">10UAH <i class="right long cart icon"></i></a></p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img3.jpg') }}" class="ui image">
+                        Открытка #3
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">80UAH <i class="right long cart icon"></i></a></p>
+                </div>
+            </div>
+
+            <div class="ui three column center aligned stackable divided grid">
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img1.jpg') }}" class="ui image">
+                        Открытка #1
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">30UAH <i class="right long cart icon"></i></a></p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img2.jpg') }}" class="ui image">
+                        Открытка #2
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">10UAH <i class="right long cart icon"></i></a></p>
+                </div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <img src="{{ asset('bundles/acmehandmade/images/img3.jpg') }}" class="ui image">
+                        Открытка #3
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">80UAH <i class="right long cart icon"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#{{ render_esi(url('product', {})) }}#}
 {% endblock %}

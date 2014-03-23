@@ -53,6 +53,7 @@ class ImageAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('image', 'image')
             ->add('active')
         ;
     }

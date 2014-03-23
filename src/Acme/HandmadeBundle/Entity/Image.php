@@ -59,6 +59,11 @@ class Image
     private $products;
 
     /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="image")
+     */
+    private $categories;
+
+    /**
      * @var datetime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -76,6 +81,7 @@ class Image
 
     public function __construct(){
         $this->products = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -214,6 +220,14 @@ class Image
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 
     /**

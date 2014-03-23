@@ -3,7 +3,7 @@ product:
     defaults: { _controller: "AcmeHandmadeBundle:Product:index" }
 
 product_show:
-    pattern:  /{id}/show
+    pattern:  /{slug}/show
     defaults: { _controller: "AcmeHandmadeBundle:Product:show" }
 
 product_new:
@@ -16,15 +16,15 @@ product_create:
     requirements: { _method: post }
 
 product_edit:
-    pattern:  /{id}/edit
+    pattern:  /{slug}/edit
     defaults: { _controller: "AcmeHandmadeBundle:Product:edit" }
 
 product_update:
-    pattern:  /{id}/update
+    pattern:  /{slug}/update
     defaults: { _controller: "AcmeHandmadeBundle:Product:update" }
     requirements: { _method: post|put }
 
 product_delete:
-    pattern:  /{id}/delete
+    pattern:  /{slug}/delete
     defaults: { _controller: "AcmeHandmadeBundle:Product:delete" }
     requirements: { _method: post|delete }

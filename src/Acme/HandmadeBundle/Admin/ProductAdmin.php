@@ -52,18 +52,6 @@ class ProductAdmin extends Admin
                 'class' => 'AcmeHandmadeBundle:Category',
                 'property' => 'name',
             ))
-//            ->add('image', 'entity', array(
-//                'label' => 'Image',
-//                'class' => 'AcmeHandmadeBundle:Image',
-//                'property' => 'image',
-//            ))
-//            ->add('image', 'collection', array(
-//                'type' => 'file',//new Image(),
-//                'allow_add' => true,
-//                'by_reference' => false,
-//                'allow_delete' => true,
-//                'prototype' => true
-//            ))
             ->add('imageBuffer', 'file', $fileFieldOptions)
             ->add('sku', 'text', array('label' => 'SKU'))
             ->add('quantity', 'integer', array('label' => 'Количество'))
@@ -91,7 +79,6 @@ class ProductAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
-//            ->add('image', 'image')
             ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
             ->add('price')
             ->add('sku')

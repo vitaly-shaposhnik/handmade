@@ -11,6 +11,9 @@
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\Category</argument>
             <argument>SonataAdminBundle:CRUD</argument>
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
         </service>
 
         <service id="acme.handmade.admin.product" class="Acme\HandmadeBundle\Admin\ProductAdmin">
@@ -18,7 +21,6 @@
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\Product</argument>
             <argument>SonataAdminBundle:CRUD</argument>
-
             <call method="setEntityManager">
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </call>
@@ -29,7 +31,6 @@
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\User</argument>
             <argument>SonataAdminBundle:CRUD</argument>
-
             <call method="setUserManager">
                 <argument type="service" id="fos_user.user_manager" />
             </call>

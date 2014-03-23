@@ -1,0 +1,56 @@
+#slider {
+    position: relative;
+    width: 940px;
+    margin:0px auto;
+}
+
+.catalogSlider {
+    margin: 0;
+    overflow: hidden;
+    width: 940px;
+    position: relative;
+}
+
+.sliderWrap {
+    position: relative;
+}
+
+.catalogSlider .Wrap_eSlide:first-child {
+    margin: 0;
+}
+
+.catalogSlider .Wrap_eSlide {
+    width: 940px;
+    float: left;
+}
+
+.catalogSlider .Wrap_eSlideLink {
+    width: 940px;
+    display: block;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.catalogSlider .slider_eArrow {
+    background-repeat: no-repeat;
+    width: 58px;
+    height: 86px;
+    top: 110px;
+    position: absolute;
+    z-index: 3;
+}
+.catalogSlider .slider_eArrow.mArRight {
+    right: 10px;
+    display: block;
+    background-color: #000000;
+}
+.catalogSlider .slider_eArrow.mArLeft {
+    display: inline;
+    left: 10px;
+    background-color: #000000;
+}
+
+/* Костыль */
+.Wrap_eSlideLink img {
+    width: 940px;
+}

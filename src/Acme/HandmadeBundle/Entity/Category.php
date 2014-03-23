@@ -37,7 +37,7 @@ class Category
      *
      * @ORM\Column(name="weight", type="integer")
      */
-    private $weight;
+    private $weight = 0;
 
     /**
      * @var integer
@@ -52,6 +52,17 @@ class Category
      * @ORM\Column(name="root_id", type="integer")
      */
     private $root_id = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Image", inversedBy="categories")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $image;
+
+    /**
+     * not mapped field
+     */
+    private $imageBuffer;
 
     /**
      * @var boolean
@@ -220,5 +231,37 @@ class Category
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $imageBuffer
+     */
+    public function setImageBuffer($imageBuffer)
+    {
+        $this->imageBuffer = $imageBuffer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageBuffer()
+    {
+        return $this->imageBuffer;
     }
 }

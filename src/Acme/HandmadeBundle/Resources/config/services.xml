@@ -10,28 +10,43 @@
             <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Categories" />
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\Category</argument>
-            <argument>AcmeHandmadeBundle:CategoryAdmin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
         </service>
 
         <service id="acme.handmade.admin.product" class="Acme\HandmadeBundle\Admin\ProductAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Products" />
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\Product</argument>
-            <argument>AcmeHandmadeBundle:ProductAdmin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
         </service>
 
         <service id="acme.handmade.admin.user" class="Acme\HandmadeBundle\Admin\UserAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Users" />
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\User</argument>
-            <argument>AcmeHandmadeBundle:UserAdmin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+
+            <call method="setUserManager">
+                <argument type="service" id="fos_user.user_manager" />
+            </call>
         </service>
 
         <service id="acme.handmade.admin.order_status" class="Acme\HandmadeBundle\Admin\OrderStatusAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Order Statuses" />
             <argument/>
             <argument>Acme\HandmadeBundle\Entity\OrderStatus</argument>
-            <argument>AcmeHandmadeBundle:OrderStatusAdmin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="acme.handmade.admin.image" class="Acme\HandmadeBundle\Admin\ImageAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Images" />
+            <argument/>
+            <argument>Acme\HandmadeBundle\Entity\Image</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
         </service>
     </services>
 

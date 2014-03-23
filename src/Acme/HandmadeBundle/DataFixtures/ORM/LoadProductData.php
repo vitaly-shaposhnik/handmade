@@ -4,8 +4,9 @@ namespace Acme\HandmadeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
+use Symfony\Component\HttpFoundation\File\File;
 use Acme\HandmadeBundle\Entity\Product;
+use Acme\HandmadeBundle\Entity\Image;
 
 class LoadProductData implements FixtureInterface
 {
@@ -19,11 +20,21 @@ class LoadProductData implements FixtureInterface
             ->findOneBy(array('id'=>1))
         ;
 
+        copy(__DIR__.'/ImagesVault/1.jpg', __DIR__.'/Images/1.jpg');
+        $img1 = new File(__DIR__.'/Images/1.jpg');
+        $image1 = new Image();
+        $image1->setName('Name1');
+        $image1->imageFile = $img1;
+        $image1->evaluateUpload();
+        $manager->persist($image1);
+        $manager->flush($image1);
+
+
         $product = new Product();
         $product->setName('Открытка 1');
         $product->setCategory($category);
         $product->setDescription("описание");
-        $product->setImage(1);
+        $product->setImage($image1);
         $product->setPrice(1000);
         $product->setSku('12321323424');
         $product->setAnnotation('аннотация');

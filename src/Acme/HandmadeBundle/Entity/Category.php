@@ -5,6 +5,7 @@ namespace Acme\HandmadeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -77,10 +78,15 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
-    private $product;
+    private $products;
 
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -195,9 +201,9 @@ class Category
     /**
      * @return mixed
      */
-    public function getProduct()
+    public function getProducts()
     {
-        return $this->product;
+        return $this->products;
     }
 
     /**

@@ -44,7 +44,7 @@ class CategoryController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('category_show', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('AcmeHandmadeBundle:Category:new.html.twig', array(
@@ -91,17 +91,17 @@ class CategoryController extends Controller
      * Finds and displays a Category entity.
      *
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->find($id);
+        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->findOneBy(array('slug' => $slug));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($slug);
 
         return $this->render('AcmeHandmadeBundle:Category:show.html.twig', array(
             'entity'      => $entity,
@@ -112,18 +112,18 @@ class CategoryController extends Controller
      * Displays a form to edit an existing Category entity.
      *
      */
-    public function editAction($id)
+    public function editAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->find($id);
+        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->findOneBy(array('slug' => $slug));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($slug);
 
         return $this->render('AcmeHandmadeBundle:Category:edit.html.twig', array(
             'entity'      => $entity,
@@ -142,7 +142,7 @@ class CategoryController extends Controller
     private function createEditForm(Category $entity)
     {
         $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('category_update', array('slug' => $entity->getSlug())),
             'method' => 'PUT',
         ));
 
@@ -154,24 +154,24 @@ class CategoryController extends Controller
      * Edits an existing Category entity.
      *
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->find($id);
+        $entity = $em->getRepository('AcmeHandmadeBundle:Category')->findOneBy(array('slug' => $slug));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($slug);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('category_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('category_edit', array('slug' => $slug)));
         }
 
         return $this->render('AcmeHandmadeBundle:Category:edit.html.twig', array(
@@ -184,14 +184,14 @@ class CategoryController extends Controller
      * Deletes a Category entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $slug)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($slug);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AcmeHandmadeBundle:Category')->find($id);
+            $entity = $em->getRepository('AcmeHandmadeBundle:Category')->findOneBy(array('slug' => $slug));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Category entity.');
@@ -205,16 +205,16 @@ class CategoryController extends Controller
     }
 
     /**
-     * Creates a form to delete a Category entity by id.
+     * Creates a form to delete a Category entity by slug.
      *
-     * @param mixed $id The entity id
+     * @param mixed $slug The entity slug
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($slug)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('category_delete', array('slug' => $slug)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

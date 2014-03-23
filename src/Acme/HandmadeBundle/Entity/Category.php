@@ -92,6 +92,12 @@ class Category
      */
     private $products;
 
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
 
     public function __construct()
     {
@@ -263,5 +269,13 @@ class Category
     public function getImageBuffer()
     {
         return $this->imageBuffer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

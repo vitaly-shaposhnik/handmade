@@ -5,6 +5,7 @@ namespace Acme\HandmadeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Acme\HandmadeBundle\Entity\Image;
 
 /**
  * Product
@@ -75,11 +76,15 @@ class Product
     private $active = true;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="image_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Image", inversedBy="products")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     private $image;
+
+    /**
+     * not mapped field
+     */
+    private $imageBuffer;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
@@ -288,6 +293,22 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * @param mixed $imageBuffer
+     */
+    public function setImageBuffer($imageBuffer)
+    {
+        $this->imageBuffer = $imageBuffer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageBuffer()
+    {
+        return $this->imageBuffer;
     }
 
     /**

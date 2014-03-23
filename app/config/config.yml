@@ -91,6 +91,20 @@ stof_doctrine_extensions:
             sluggable: true
             translatable: true
 
+sonata_doctrine_orm_admin:
+#    entity_manager:
+
+        templates:
+#            form:
+#                - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+#            filter:
+#                - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+            types:
+                list:
+                   image: AcmeHandmadeBundle:Image:admin_image_template.html.twig
+#                show:
+#                    image: AcmeHandmadeBundle:Image:admin_image_template.html.twig
+
 fos_rest:
     param_fetcher_listener: true
     body_listener: true

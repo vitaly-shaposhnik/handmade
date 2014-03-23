@@ -5,6 +5,7 @@ namespace Acme\HandmadeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Image
@@ -53,6 +54,11 @@ class Image
     private $image;
 
     /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="image")
+     */
+    private $products;
+
+    /**
      * @var datetime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -67,6 +73,10 @@ class Image
      * @ORM\Column(type="datetime")
      */
     private $updated;
+
+    public function __construct(){
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -147,24 +157,29 @@ class Image
             $path = realpath(__DIR__.'/../../../../web').'/';
         }
 
-        return $path . 'uploads/cards';
+        return $path . 'uploads/images';
+    }
+
+    public function getWebPath()
+    {
+        return $this->getImagesPath() . '/' . $this->getImage();
     }
 
     public function evaluateUpload()
     {
-        if (($oldImage = $this->getImage()) && $this->removeImage) {
-            unlink($oldImage);
-            $this->setImage($oldImage = null);
-        }
-
-        if (null === $this->imageFile) {
-            return;
-        }
-
-        // remove old image
-        if ($oldImage) {
-            unlink($oldImage);
-        }
+//        if (($oldImage = $this->getImage()) && $this->removeImage) {
+//            unlink($oldImage);
+//            $this->setImage($oldImage = null);
+//        }
+//
+//        if (null === $this->imageFile) {
+//            return;
+//        }
+//
+//        // remove old image
+//        if ($oldImage) {
+//            unlink($oldImage);
+//        }
 
         $imagesPath = $this->getImagesPath(true);
         if (!is_dir($imagesPath)) {
@@ -191,5 +206,34 @@ class Image
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param mixed $imageFile
+     */
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function __toString()
+    {
+        return $this->image;
     }
 }

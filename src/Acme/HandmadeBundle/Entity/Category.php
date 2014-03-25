@@ -15,6 +15,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Category
 {
+    use \Acme\HandmadeBundle\Traits\Transfer;
+
     /**
      * @var integer
      *
@@ -97,6 +99,8 @@ class Category
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    public $test;
 
 
     public function __construct()

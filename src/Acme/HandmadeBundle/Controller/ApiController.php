@@ -7,7 +7,6 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Acme\HandmadeBundle\DTO\Category as DtoCategory;
 use Acme\HandmadeBundle\Entity\Category;
 
-
 class ApiController extends FOSRestController {
 
     /**
@@ -16,8 +15,16 @@ class ApiController extends FOSRestController {
     public function getCategoriesAction() {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('AcmeHandmadeBundle:Category')->findAll();
-        //$categoriesDto = new DtoCategory();
 
-        return array('categories' => $categories);
+        $result = [];
+        foreach ($categories as $category) {
+            if (!$category instanceof \Acme\HandmadeBundle\Entity\Category) {
+                continue;
+            }
+
+            $result[] = $category->transferObjectToDto($category, new DtoCategory());
+        }
+
+        return $result;
     }
 }

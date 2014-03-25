@@ -100,9 +100,6 @@ class Category
      */
     private $slug;
 
-    public $test;
-
-
     public function __construct()
     {
         $this->products = new ArrayCollection();

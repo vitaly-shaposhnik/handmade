@@ -15,6 +15,16 @@ class LoadImageData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        copy(__DIR__.'/ImagesVault/empty-product.png', __DIR__.'/Images/empty-product.png');
+
+        $img1 = new File(__DIR__.'/Images/empty-product.png');
+        $image1 = new Image();
+        $image1->setName('Name1');
+        $image1->imageFile = $img1;
+        $image1->evaluateUpload('empty-product');
+        $manager->persist($image1);
+        $manager->flush();
+
 //        copy(__DIR__.'/ImagesVault/1.jpg', __DIR__.'/Images/1.jpg');
 //        copy(__DIR__.'/ImagesVault/2.jpg', __DIR__.'/Images/2.jpg');
 //        copy(__DIR__.'/ImagesVault/3.jpg', __DIR__.'/Images/3.jpg');

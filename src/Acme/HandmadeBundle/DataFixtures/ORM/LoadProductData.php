@@ -20,8 +20,8 @@ class LoadProductData implements FixtureInterface
             ->findOneBy(array('id'=>1))
         ;
 
-        copy(__DIR__.'/ImagesVault/1.jpg', __DIR__.'/Images/1.jpg');
-        $img1 = new File(__DIR__.'/Images/1.jpg');
+        copy(__DIR__.'/ImagesVault/bon03.jpg', __DIR__.'/Images/bon03.jpg');
+        $img1 = new File(__DIR__.'/Images/bon03.jpg');
         $image1 = new Image();
         $image1->setName('Name1');
         $image1->imageFile = $img1;

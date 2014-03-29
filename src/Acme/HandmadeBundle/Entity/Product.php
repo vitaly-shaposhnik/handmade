@@ -115,6 +115,12 @@ class Product
     private $slug;
 
     /**
+     * @var boolean
+     * @ORM\Column(name="show_on_homepage", type="boolean")
+     */
+    private $show_on_homepage = false;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -355,5 +361,21 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @param boolean $show_on_homepage
+     */
+    public function setShowOnHomepage($show_on_homepage)
+    {
+        $this->show_on_homepage = $show_on_homepage;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowOnHomepage()
+    {
+        return $this->show_on_homepage;
     }
 }

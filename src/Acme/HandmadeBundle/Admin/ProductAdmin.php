@@ -55,6 +55,11 @@ class ProductAdmin extends Admin
             ->add('imageBuffer', 'file', $fileFieldOptions)
             ->add('sku', 'text', array('label' => 'SKU'))
             ->add('quantity', 'integer', array('label' => 'Количество'))
+            ->add('show_on_homepage', 'checkbox', array(
+                'label' => 'Показать на главной',
+                'data' => false,
+                'required' => false,
+            ))
             ->add('active', 'checkbox', array(
                 'label' => 'Active',
                 'data'  => true,
@@ -69,7 +74,9 @@ class ProductAdmin extends Admin
         $datagridMapper
             ->add('name')
             ->add('price')
+            ->add('category')
             ->add('sku')
+            ->add('show_on_homepage')
             ->add('active')
         ;
     }
@@ -81,11 +88,13 @@ class ProductAdmin extends Admin
             ->addIdentifier('name')
             ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
             ->add('price')
+            ->add('category')
             ->add('sku')
             ->add('quantity')
-            ->add('active')
             ->add('created')
             ->add('updated')
+            ->add('show_on_homepage')
+            ->add('active')
         ;
     }
 

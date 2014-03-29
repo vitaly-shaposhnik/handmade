@@ -27,7 +27,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      * @Assert\NotBlank()
      */
     private $name;
@@ -56,7 +56,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="sku", type="string", length=255)
+     * @ORM\Column(name="sku", type="string", length=255, unique=true)
      * @Assert\NotBlank()
      */
     private $sku;

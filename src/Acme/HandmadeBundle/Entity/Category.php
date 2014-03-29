@@ -29,10 +29,17 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      * @Assert\NotBlank()
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @var integer
@@ -99,6 +106,12 @@ class Category
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="show_in_main_menu", type="boolean")
+     */
+    private $show_in_main_menu = false;
 
     public function __construct()
     {
@@ -283,5 +296,37 @@ class Category
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $show_in_main_menu
+     */
+    public function setShowInMainMenu($show_in_main_menu)
+    {
+        $this->show_in_main_menu = $show_in_main_menu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShowInMainMenu()
+    {
+        return $this->show_in_main_menu;
     }
 }

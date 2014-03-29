@@ -53,7 +53,7 @@ class ImageAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('image', 'image')
+            ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
             ->add('active')
         ;
     }

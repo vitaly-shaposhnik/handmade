@@ -35,14 +35,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="annotation", type="text")
+     * @ORM\Column(name="annotation", type="text", nullable=true)
      */
     private $annotation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -113,6 +113,12 @@ class Product
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="show_on_homepage", type="boolean")
+     */
+    private $show_on_homepage = false;
 
     /**
      * Get id
@@ -355,5 +361,21 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @param boolean $show_on_homepage
+     */
+    public function setShowOnHomepage($show_on_homepage)
+    {
+        $this->show_on_homepage = $show_on_homepage;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowOnHomepage()
+    {
+        return $this->show_on_homepage;
     }
 }

@@ -171,28 +171,16 @@ class Image
         return $this->getImagesPath() . '/' . $this->getImage();
     }
 
-    public function evaluateUpload()
+    public function evaluateUpload($name = null)
     {
-//        if (($oldImage = $this->getImage()) && $this->removeImage) {
-//            unlink($oldImage);
-//            $this->setImage($oldImage = null);
-//        }
-//
-//        if (null === $this->imageFile) {
-//            return;
-//        }
-//
-//        // remove old image
-//        if ($oldImage) {
-//            unlink($oldImage);
-//        }
-
         $imagesPath = $this->getImagesPath(true);
         if (!is_dir($imagesPath)) {
             mkdir($imagesPath, 0777, true);
         }
 
-        $imageName = md5(uniqid().$this->getName()).'.'.$this->imageFile->guessExtension();
+        $imageName = !empty($name)
+            ? $name . '.' . $this->imageFile->guessExtension()
+            : md5(uniqid() . $this->getName()) . '.' . $this->imageFile->guessExtension();
 
         $this->imageFile->move($imagesPath, $imageName);
         $this->setImage($imageName);

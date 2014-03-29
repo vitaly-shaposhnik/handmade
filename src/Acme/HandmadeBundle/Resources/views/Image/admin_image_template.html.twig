@@ -2,5 +2,9 @@
 
 
 {% block field %}
-<img src="{{ asset('uploads/images/') }}{{ value|nl2br }}"/>
+    {% if value is not empty %}
+        <img src="{{ asset('uploads/images/') }}{{ value|nl2br }}"/>
+    {% else %}
+        <img src="{{ asset('uploads/images/empty.png') }}"/>
+    {% endif %}
 {% endblock %}

@@ -35,6 +35,7 @@ class CategoryAdmin extends Admin
 
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
+            ->add('slug', 'text', array('label' => 'Slug'))
             ->add('imageBuffer', 'file', $fileFieldOptions)
             ->add('weight', 'integer', array('label' => 'Вес'))
             ->add('active', 'checkbox', array(
@@ -50,6 +51,7 @@ class CategoryAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('slug')
             ->add('weight')
             ->add('active')
         ;
@@ -61,6 +63,7 @@ class CategoryAdmin extends Admin
         $listMapper
             ->addIdentifier('name')
             ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
+            ->add('slug')
             ->add('weight')
             ->add('active')
         ;

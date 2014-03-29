@@ -31,17 +31,18 @@ class ProductAdmin extends Admin
 
             // add a 'help' option containing the preview's img tag
             $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="preview" />';
+            $fileFieldOptions['label'] = 'Изображение';
         }
 
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
             ->add('annotation', 'textarea', array(
                 'label' => 'Аннотация',
-//                'required' => false,
+                'required' => false,
             ))
             ->add('description', 'textarea', array(
                 'label' => 'Описание',
-//                'required' => false,
+                'required' => false,
             ))
             ->add('price', 'money', array(
                 'label' => 'Цена',
@@ -103,25 +104,27 @@ class ProductAdmin extends Admin
      */
     public function preUpdate($product)
     {
-        $needPersist = false;
-        if (!$product->getImage()) {
-            $image = new Image();
-            $needPersist = true;
-        } else {
-            $image = $product->getImage();
+        if ($product->getImageBuffer()) {
+            $needPersist = false;
+            if (!$product->getImage()) {
+                $image = new Image();
+                $needPersist = true;
+            } else {
+                $image = $product->getImage();
+            }
+
+            $image->setName($product->getName());
+            $image->setActive(true);
+            $image->setImageFile($product->getImageBuffer());
+            $image->evaluateUpload();
+
+            if ($needPersist) {
+                $em = $this->getEntityManager();
+                $em->persist($image);
+            }
+
+            $product->setImage($image);
         }
-
-        $image->setName($product->getName());
-        $image->setActive(true);
-        $image->setImageFile($product->getImageBuffer());
-        $image->evaluateUpload();
-
-        if ($needPersist) {
-            $em = $this->getEntityManager();
-            $em->persist($image);
-        }
-
-        $product->setImage($image);
     }
 
     /**
@@ -129,16 +132,18 @@ class ProductAdmin extends Admin
      */
     public function prePersist($product)
     {
-        $image = new Image();
-        $image->setName($product->getName());
-        $image->setActive(true);
-        $image->setImageFile($product->getImageBuffer());
-        $image->evaluateUpload();
+        if ($product->getImageBuffer()) {
+            $image = new Image();
+            $image->setName($product->getName());
+            $image->setActive(true);
+            $image->setImageFile($product->getImageBuffer());
+            $image->evaluateUpload();
 
-        $em = $this->getEntityManager();
-        $em->persist($image);
+            $em = $this->getEntityManager();
+            $em->persist($image);
 
-        $product->setImage($image);
+            $product->setImage($image);
+        }
     }
 
     public function setEntityManager(EntityManager $em)

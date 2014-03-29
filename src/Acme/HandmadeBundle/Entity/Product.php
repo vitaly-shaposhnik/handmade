@@ -35,14 +35,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="annotation", type="text")
+     * @ORM\Column(name="annotation", type="text", nullable=true)
      */
     private $annotation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 

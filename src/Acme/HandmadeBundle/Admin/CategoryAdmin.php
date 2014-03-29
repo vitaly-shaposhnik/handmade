@@ -35,9 +35,18 @@ class CategoryAdmin extends Admin
 
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
+            ->add('description', 'textarea', array(
+                'label' => 'Описание',
+                'required' => false,
+            ))
             ->add('slug', 'text', array('label' => 'Slug'))
             ->add('imageBuffer', 'file', $fileFieldOptions)
             ->add('weight', 'integer', array('label' => 'Вес'))
+            ->add('show_in_main_menu', 'checkbox', array(
+                'label' => 'Добавить в главное меню',
+                'data' => false,
+                'required' => false,
+            ))
             ->add('active', 'checkbox', array(
                 'label' => 'Active',
                 'data'  => true,
@@ -64,6 +73,7 @@ class CategoryAdmin extends Admin
             ->addIdentifier('name')
             ->add('image', 'string', array('template' => 'AcmeHandmadeBundle:Image:admin_image_template.html.twig'))
             ->add('slug')
+            ->add('show_in_main_menu')
             ->add('weight')
             ->add('active')
         ;

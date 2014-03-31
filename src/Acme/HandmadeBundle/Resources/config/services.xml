@@ -49,6 +49,12 @@
             <argument>Acme\HandmadeBundle\Entity\Image</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
+
+
+        <service id="acme.handmade.api.category.handler" class="Acme\HandmadeBundle\Handler\ApiCategoryHandler">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>Acme\HandmadeBundle\Entity\Category</argument>
+        </service>
     </services>
 
 </container>

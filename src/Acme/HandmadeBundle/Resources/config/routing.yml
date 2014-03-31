@@ -11,7 +11,12 @@ AcmeHandmadeBundle_product:
     prefix:   /product
 
 
-api_categories:
-    prefix: api/category
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+acme_handmade_api_category:
     type: rest
-    resource: "Acme\HandmadeBundle\Controller\ApiController"
+    prefix: /api
+    resource: "@AcmeHandmadeBundle/Resources/config/routing/api/category.yml"
+

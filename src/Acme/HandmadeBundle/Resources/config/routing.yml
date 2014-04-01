@@ -21,3 +21,14 @@ acme_handmade_api:
     type: rest
     prefix: /api
     resource: "@AcmeHandmadeBundle/Resources/config/routing/api.yml"
+
+
+# WSSE
+ctm_ml_wsse_login:
+    pattern: /wsse/login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+ctm_ml_wsse_check:
+    pattern: /wsse/login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+    requirements: { _method: post }

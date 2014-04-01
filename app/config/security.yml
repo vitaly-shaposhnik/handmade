@@ -19,6 +19,32 @@ security:
 
 
     firewalls:
+        wsse_secured:
+            pattern:   ^/api/.*
+#            stateless: true
+            wsse:
+#                nonce_dir: null #"%kernel.root_dir%/cache/security/nonces"
+                nonce_cache_service_id: cache_nonces
+                lifetime: 30000
+                realm: "Secured API"
+                profile: "UsernameToken"
+#                provider: fos_userbundle
+#            anonymous:    true
+#                encoder: #digest algorithm
+#                    algorithm: sha1
+#                    encodeHashAsBase64: true
+#                    iterations: 1
+#        wsse_auth:
+#            pattern:   ^/wsse
+#            form_login:
+#                provider: fos_userbundle
+#                check_path: /wsse/login_check
+#                login_path: /wsse/login
+##                success_handler: ctm_ml.handler.wsse_login_success
+#                require_previous_session: false
+#            anonymous: true
+
+
         main:
             pattern: ^/
             form_login:
@@ -26,6 +52,7 @@ security:
                 csrf_provider: form.csrf_provider
             logout:       true
             anonymous:    true
+
 #        dev:
 #            pattern:  ^/(_(profiler|wdt)|css|images|js)/
 #            security: false
@@ -52,3 +79,10 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/wsse, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+
+services:
+    cache_nonces:
+        class: Doctrine\Common\Cache\PhpFileCache
+        arguments: [%kernel.root_dir%/cache/security/nonces]

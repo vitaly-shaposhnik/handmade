@@ -28,7 +28,8 @@
 		"semantic/ui": "dev-master",
 		"friendsofsymfony/rest-bundle": "1.3.*",
 		"jms/serializer-bundle": "*",
-		"nelmio/api-doc-bundle": "@dev"
+		"nelmio/api-doc-bundle": "@dev",
+		"escapestudios/wsse-authentication-bundle": "2.3.x-dev"
     },
     "scripts": {
         "post-install-cmd": [

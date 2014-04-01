@@ -15,6 +15,8 @@ use Acme\HandmadeBundle\Entity\Image;
  */
 class Product
 {
+    use \Acme\HandmadeBundle\Traits\Transfer;
+
     /**
      * @var integer
      *

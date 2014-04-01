@@ -53,6 +53,13 @@
         <service id="acme.handmade.api.category" class="Acme\HandmadeBundle\Service\ApiCategoryService">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>Acme\HandmadeBundle\Entity\Category</argument>
+            <argument>Acme\HandmadeBundle\DTO\Category</argument>
+        </service>
+
+        <service id="acme.handmade.api.product" class="Acme\HandmadeBundle\Service\ApiProductService">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>Acme\HandmadeBundle\Entity\Product</argument>
+            <argument>Acme\HandmadeBundle\DTO\Product</argument>
         </service>
     </services>
 

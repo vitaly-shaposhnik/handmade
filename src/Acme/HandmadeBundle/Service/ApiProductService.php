@@ -2,10 +2,11 @@
 
 namespace Acme\HandmadeBundle\Service;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Acme\HandmadeBundle\Service\ApiService;
+use Doctrine\Common\Persistence\ObjectManager;
 
-class ApiCategoryService extends ApiService
+
+class ApiProductService extends ApiService
 {
     public function __construct(ObjectManager $om, $entityClass, $dtoClass)
     {

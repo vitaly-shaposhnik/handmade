@@ -1,0 +1,2 @@
+Acme\HandmadeBundle\Entity\Product:
+    exclusion_policy: NONE

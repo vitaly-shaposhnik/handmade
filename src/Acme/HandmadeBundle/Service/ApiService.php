@@ -1,24 +1,23 @@
 <?php
 
-namespace Acme\HandmadeBundle\Handler;
+namespace Acme\HandmadeBundle\Service;
 
-use Acme\HandmadeBundle\Model\CategoryHandlerInterface;
+use Acme\HandmadeBundle\Service\ApiCategoryServiceInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Acme\HandmadeBundle\DTO\Category as DtoCategory;
 
-class ApiCategoryHandler implements CategoryHandlerInterface
+class ApiService implements ApiCategoryServiceInterface
 {
     protected $om;
     protected $entityClass;
     protected $repository;
-    protected $dto;
+    protected $dtoClass;
 
-    public function __construct(ObjectManager $om, $entityClass)
+    public function __construct(ObjectManager $om, $entityClass, $dtoClass)
     {
         $this->om = $om;
         $this->entityClass = $entityClass;
         $this->repository = $this->om->getRepository($this->entityClass);
-        $this->dto = new DtoCategory();
+        $this->dtoClass = $dtoClass;
     }
 
     public function get($id)
@@ -42,19 +41,22 @@ class ApiCategoryHandler implements CategoryHandlerInterface
         return $this->transfer($categories);
     }
 
+    /**
+     * @param array|object $data
+     * @return array|object
+     */
     public function transfer($data)
     {
-        $result = [];
-
+        $result = array();
         if (is_array($data)) {
             foreach ($data as $item) {
                 if ($item instanceof $this->entityClass) {
-                    $result[] = $item->transferObjectToDto($item, $this->dto);
+                    $result[] = $item->transferObjectToDto($item, new $this->dtoClass());
                 }
             }
         } elseif (is_object($data) && $data instanceof $this->entityClass) {
             if ($data instanceof $this->entityClass) {
-                $result[] = $data->transferObjectToDto($data, $this->dto);
+                $result = $data->transferObjectToDto($data, new $this->dtoClass());
             }
         }
 

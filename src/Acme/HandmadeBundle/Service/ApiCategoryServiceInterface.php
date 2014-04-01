@@ -1,9 +1,8 @@
 <?php
 
-namespace Acme\HandmadeBundle\Model;
+namespace Acme\HandmadeBundle\Service;
 
-
-interface CategoryHandlerInterface
+interface ApiCategoryServiceInterface
 {
     public function get($id);
 

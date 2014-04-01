@@ -1,0 +1,13 @@
+category:
+    pattern:  /
+    type: rest
+    prefix: /v1
+    resource: "Acme\HandmadeBundle\Controller\ApiCategoryController"
+    name_prefix:  api_1_
+
+product:
+    pattern: /
+    type: rest
+    prefix: /v1
+    resource: "Acme\HandmadeBundle\Controller\ApiProductController"
+    name_prefix:  api_1_

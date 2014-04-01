@@ -50,7 +50,7 @@
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
 
-        <service id="acme.handmade.api.category.handler" class="Acme\HandmadeBundle\Handler\ApiCategoryHandler">
+        <service id="acme.handmade.api.category" class="Acme\HandmadeBundle\Service\ApiCategoryService">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>Acme\HandmadeBundle\Entity\Category</argument>
         </service>

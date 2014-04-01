@@ -9,6 +9,34 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class ApiCategoryController extends FOSRestController
 {
     /**
+     * Get list of Category
+     *
+     * @ApiDoc(
+     *      resource = true,
+     *      description = "Get a category list",
+     *      statusCodes = {
+     *          200 = "Returned when successful",
+     *          404 = "Returned when the page is not found"
+     *      }
+     * )
+     *
+     * @Annotations\View(templateVar="category")
+     *
+     * @param Request $request the request object
+     *
+     * @return array
+     *
+     * @throw NotFoundHttpException when page not exist
+     */
+    public function getCategoriesAction() {
+        $page = $this->container
+            ->get('acme.handmade.api.category')
+            ->getList();
+
+        return $page;
+    }
+
+    /**
      * Get single Category
      *
      * @ApiDoc(
@@ -30,13 +58,13 @@ class ApiCategoryController extends FOSRestController
      *
      * @throw NotFoundHttpException when page not exist
      */
-    public function getCategoryAction($id) {
-        $page = $this->container
-            ->get('acme.handmade.api.category.handler')
-            ->get($id);
-
-        return $page;
-    }
+//    public function getCategoryAction($id) {
+//        $page = $this->container
+//            ->get('acme.handmade.api.category')
+//            ->get($id);
+//
+//        return $page;
+//    }
 
     /**
      * Get single Category by slug
@@ -60,39 +88,12 @@ class ApiCategoryController extends FOSRestController
      *
      * @throw NotFoundHttpException when page not exist
      */
-    public function getCategorySlugAction($slug) {
+    public function getCategoryAction($slug) {
         $page = $this->container
-            ->get('acme.handmade.api.category.handler')
+            ->get('acme.handmade.api.category')
             ->getBySlug($slug);
 
         return $page;
     }
 
-    /**
-     * Get list of Category
-     *
-     * @ApiDoc(
-     *      resource = true,
-     *      description = "Get a category list",
-     *      statusCodes = {
-     *          200 = "Returned when successful",
-     *          404 = "Returned when the page is not found"
-     *      }
-     * )
-     *
-     * @Annotations\View(templateVar="category")
-     *
-     * @param Request $request the request object
-     *
-     * @return array
-     *
-     * @throw NotFoundHttpException when page not exist
-     */
-    public function getCategoryListAction() {
-        $page = $this->container
-            ->get('acme.handmade.api.category.handler')
-            ->getList();
-
-        return $page;
-    }
 }

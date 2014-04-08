@@ -60,4 +60,11 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         $container->get('some_service')->doSomethingWith($argument);
     }
 
+    /**
+     * @Then /^I should sleep "([^"]*)"$/
+     */
+    public function iShouldSleep($time)
+    {
+        $this->getSession()->wait($time, true);
+    }
 }

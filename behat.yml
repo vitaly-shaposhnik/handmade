@@ -3,7 +3,7 @@ default:
         parameters:
             javascript_session:   sahi
             base_url:             http://handmade.local/
-#            show_cmd:             open %s
+            show_cmd:             open %s
 
     extensions:
         Behat\Symfony2Extension\Extension:

@@ -1,20 +1,42 @@
+# SELENIUM 2
 default:
     context:
         parameters:
-            javascript_session:   sahi
-            base_url:             http://handmade.local/app_dev.php/
-            show_cmd:             open %s
+            browser: firefox
 
     extensions:
         Behat\Symfony2Extension\Extension:
             mink_driver: true
         Behat\MinkExtension\Extension:
             base_url:    'http://handmade.local/app_dev.php/'
-            default_session: sahi
-            javascript_session: sahi
-            sahi: ~
+            selenium2: ~
+            default_session: 'selenium2'
+            browser_name: firefox
 
     paths:
         features: '%behat.paths.base%/src/Acme/HandmadeBundle/Features'
     context:
         class: Acme\HandmadeBundle\Features\Context\FeatureContext
+
+
+# SAHI
+#default:
+#    context:
+#        parameters:
+#            javascript_session:   sahi
+#            base_url:             http://handmade.local/app_dev.php/
+#            show_cmd:             open %s
+#
+#    extensions:
+#        Behat\Symfony2Extension\Extension:
+#            mink_driver: true
+#        Behat\MinkExtension\Extension:
+#            base_url:    'http://handmade.local/app_dev.php/'
+#            default_session: sahi
+#            javascript_session: sahi
+#            sahi: ~
+#
+#    paths:
+#        features: '%behat.paths.base%/src/Acme/HandmadeBundle/Features'
+#    context:
+#        class: Acme\HandmadeBundle\Features\Context\FeatureContext

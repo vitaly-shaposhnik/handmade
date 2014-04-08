@@ -4,7 +4,7 @@ Feature: Handmade
   I need to be able manage content
 
   @insulated @javascript @api
-  Scenario: Enter handmade view page as user which has access to it
+  Scenario: Test admin page login
     Given I am on homepage
     When I go to "/admin"
     Then I should see "Login"
@@ -13,4 +13,14 @@ Feature: Handmade
     And I check "Remember me"
     And I press "_submit"
     Then I should see "Sonata Admin"
-    Then I should sleep "5000"
+    And I should sleep "3000"
+    When I go to homepage
+    Then I should see "Творим с любовью!"
+    And I should sleep "3000"
+
+    @insulated @javascript
+    Scenario: Test feature
+      Given I logged in as "admin" with "111111" password
+      When I go to "/admin"
+      Then I should see "Sonata Admin"
+      And I should sleep "2000"

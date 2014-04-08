@@ -10,6 +10,7 @@ use Behat\Behat\Context\BehatContext,
     Behat\Behat\Exception\PendiNngException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Context\Step;
 
 //
 // Require 3rd-party libraries here:
@@ -66,5 +67,19 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function iShouldSleep($time)
     {
         $this->getSession()->wait($time, true);
+    }
+
+    /**
+     * @Given /^I logged in as "([^"]*)" with "([^"]*)" password$/
+     */
+    public function iLoggedInWithPassword($username, $password)
+    {
+        return array(
+            new Step\Given("I am on \"/login\""),
+            new Step\When("I fill in \"Username\" with \"admin\""),
+            new Step\When("I fill in \"Password\" with \"111111\""),
+            new Step\When("I press \"_submit\""),
+            new Step\Then("I should be on \"/\""),
+        );
     }
 }

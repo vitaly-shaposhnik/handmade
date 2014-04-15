@@ -132,3 +132,35 @@ jms_serializer:
             Films:
                 namespace_prefix: "Acme\\HandmadeBundle"
                 path: "%kernel.root_dir%/serializer/HandmadeBundle"
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      loggly
+        loggly:
+            type: service
+            id: whitewashing_loggly.monolog_handler
+#        buffer_to_loggly:
+#            type: buffer
+#            level: debug
+#            handler: send_to_loggly
+#        send_to_loggly:
+#            type: service
+#            id: whitewashing_loggly.monolog_handler
+
+whitewashing_loggly:
+    # Loggly input key
+    key: %loggly.key%
+
+    # Loggly API host
+    host: logs.loggly.com
+
+    # Loggly API port (443 for HTTPS, 80 for HTTP)
+    port: 443
+
+    # Level to be logged (defaults to DEBUG)
+    level: DEBUG
+
+    bubble: true

@@ -20,7 +20,7 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
+//            new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
@@ -32,6 +32,8 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+
+            new Whitewashing\Bundle\LogglyBundle\WhitewashingLogglyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

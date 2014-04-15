@@ -3,8 +3,45 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7676ad94470e6705df57500764c555d7",
+    "hash": "9e1e8d0ee2376ee21112498d1f09fc32",
     "packages": [
+        {
+            "name": "beberlei/loggly-bundle",
+            "version": "dev-master",
+            "target-dir": "Whitewashing/Bundle/LogglyBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/WhitewashingLogglyBundle.git",
+                "reference": "9e5992547cd9fec460421e6516c44dafa92c0b91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/WhitewashingLogglyBundle/zipball/9e5992547cd9fec460421e6516c44dafa92c0b91",
+                "reference": "9e5992547cd9fec460421e6516c44dafa92c0b91",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/monolog-bundle": "*"
+            },
+            "type": "bundle",
+            "autoload": {
+                "psr-0": {
+                    "Whitewashing\\Bundle\\LogglyBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                }
+            ],
+            "description": "Bundle for Symfony2 that extends Monolog for Loggly support",
+            "time": "2013-06-30 08:09:50"
+        },
         {
             "name": "behat/behat",
             "version": "v2.5.2",
@@ -1327,12 +1364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "fa6022638e10342f5244181675e4bcd4955fc2ff"
+                "reference": "e4c000a9b19096be0135d0773b56f7c757c93542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/fa6022638e10342f5244181675e4bcd4955fc2ff",
-                "reference": "fa6022638e10342f5244181675e4bcd4955fc2ff",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/e4c000a9b19096be0135d0773b56f7c757c93542",
+                "reference": "e4c000a9b19096be0135d0773b56f7c757c93542",
                 "shasum": ""
             },
             "require": {
@@ -1387,7 +1424,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-04-05 11:45:34"
+            "time": "2014-04-08 21:21:16"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -2613,12 +2650,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "8d54073303b50d5a875a40d187e88912d06aa452"
+                "reference": "b9994ca93900d05aa12d38f44b886f45e0d0ce2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/8d54073303b50d5a875a40d187e88912d06aa452",
-                "reference": "8d54073303b50d5a875a40d187e88912d06aa452",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/b9994ca93900d05aa12d38f44b886f45e0d0ce2f",
+                "reference": "b9994ca93900d05aa12d38f44b886f45e0d0ce2f",
                 "shasum": ""
             },
             "require": {
@@ -2629,7 +2666,6 @@
                 "sonata-project/block-bundle": "~2.2,>=2.2.7",
                 "sonata-project/core-bundle": "~2.2",
                 "sonata-project/exporter": "~1.0",
-                "sonata-project/jquery-bundle": "1.10.2",
                 "symfony/class-loader": "~2.3",
                 "symfony/config": "~2.3",
                 "symfony/console": "~2.3",
@@ -2685,7 +2721,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-04-08 20:08:23"
+            "time": "2014-04-11 15:11:14"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2817,12 +2853,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "c3344a585985fcaab4900e920c2720610f0b75fe"
+                "reference": "109e4391e3ea186be8516d940d9dfb1e781272b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/c3344a585985fcaab4900e920c2720610f0b75fe",
-                "reference": "c3344a585985fcaab4900e920c2720610f0b75fe",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/109e4391e3ea186be8516d940d9dfb1e781272b5",
+                "reference": "109e4391e3ea186be8516d940d9dfb1e781272b5",
                 "shasum": ""
             },
             "require": {
@@ -2871,7 +2907,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2014-03-19 11:44:02"
+            "time": "2014-04-11 13:18:46"
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
@@ -2879,12 +2915,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "8b73eba9838c2c26d5d0ac28eee73429c6f3407e"
+                "reference": "a4e376a6d3df55d1f260013c3cecd65efbfaec63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/8b73eba9838c2c26d5d0ac28eee73429c6f3407e",
-                "reference": "8b73eba9838c2c26d5d0ac28eee73429c6f3407e",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/a4e376a6d3df55d1f260013c3cecd65efbfaec63",
+                "reference": "a4e376a6d3df55d1f260013c3cecd65efbfaec63",
                 "shasum": ""
             },
             "require": {
@@ -2939,7 +2975,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2014-04-08 16:56:37"
+            "time": "2014-04-09 12:07:30"
         },
         {
             "name": "sonata-project/exporter",
@@ -2998,69 +3034,18 @@
             "time": "2013-10-24 13:43:33"
         },
         {
-            "name": "sonata-project/jquery-bundle",
-            "version": "1.10.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sonata-project/SonatajQueryBundle.git",
-                "reference": "a53282159f54bc44379d63727a042254841302d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonatajQueryBundle/zipball/a53282159f54bc44379d63727a042254841302d7",
-                "reference": "a53282159f54bc44379d63727a042254841302d7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sonata\\jQueryBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Thomas Rabaix",
-                    "email": "thomas.rabaix@sonata-project.org",
-                    "homepage": "http://sonata-project.org"
-                },
-                {
-                    "name": "Sonata Community",
-                    "homepage": "https://github.com/sonata-project/SonatajQueryBundle/contributors"
-                }
-            ],
-            "description": "Symfony SonatajQueryBundle",
-            "homepage": "http://sonata-project.org/bundles/jquery",
-            "keywords": [
-                "jquery",
-                "sonata"
-            ],
-            "time": "2014-04-01 12:48:59"
-        },
-        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "dev-master",
             "target-dir": "Stof/DoctrineExtensionsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "ec565406edc50453f9d61e2fd7c30c61e406c6b4"
+                "reference": "f1c7993863f83f22f187f11d2a8eb462b836701e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/ec565406edc50453f9d61e2fd7c30c61e406c6b4",
-                "reference": "ec565406edc50453f9d61e2fd7c30c61e406c6b4",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/f1c7993863f83f22f187f11d2a8eb462b836701e",
+                "reference": "f1c7993863f83f22f187f11d2a8eb462b836701e",
                 "shasum": ""
             },
             "require": {
@@ -3108,7 +3093,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2014-02-21 11:10:28"
+            "time": "2014-04-09 14:29:58"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3766,7 +3751,8 @@
         "behat/behat": 0,
         "behat/mink": 0,
         "behat/symfony2-extension": 0,
-        "behat/mink-selenium2-driver": 0
+        "behat/mink-selenium2-driver": 0,
+        "beberlei/loggly-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

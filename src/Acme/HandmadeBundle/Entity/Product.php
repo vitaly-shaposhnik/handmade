@@ -380,4 +380,14 @@ class Product
     {
         return $this->show_on_homepage;
     }
+
+    public function getImagePath()
+    {
+        $image = $this->getImage();
+        if ($image instanceof \Acme\HandmadeBundle\Entity\Image && ($webPath = $image->getWebPath())) {
+            return $webPath;
+        }
+
+        return null;
+    }
 }

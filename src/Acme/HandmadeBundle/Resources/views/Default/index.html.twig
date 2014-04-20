@@ -11,8 +11,6 @@
                     <div class="sliderWrap clearfix"></div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -24,57 +22,6 @@
             </div>
         </div>
 
-        <div class="ui two wide column"></div>
-        <div class="twelve wide column">
-            <div class="ui three column center aligned stackable divided grid">
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img1.jpg') }}" class="ui image">
-                        Открытка #1
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">30UAH <i class="right long cart icon"></i></a></p>
-                </div>
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img2.jpg') }}" class="ui image">
-                        Открытка #2
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">10UAH <i class="right long cart icon"></i></a></p>
-                </div>
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img3.jpg') }}" class="ui image">
-                        Открытка #3
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">80UAH <i class="right long cart icon"></i></a></p>
-                </div>
-            </div>
-
-            <div class="ui three column center aligned stackable divided grid">
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img1.jpg') }}" class="ui image">
-                        Открытка #1
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">30UAH <i class="right long cart icon"></i></a></p>
-                </div>
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img2.jpg') }}" class="ui image">
-                        Открытка #2
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">10UAH <i class="right long cart icon"></i></a></p>
-                </div>
-                <div class="column">
-                    <div class="ui icon header">
-                        <img src="{{ asset('bundles/acmehandmade/images/img3.jpg') }}" class="ui image">
-                        Открытка #3
-                    </div>
-                    <p><a class="ui teal right labeled icon button" href="#">80UAH <i class="right long cart icon"></i></a></p>
-                </div>
-            </div>
-        </div>
+        {{ render_esi(controller('AcmeHandmadeBundle:Product:top')) }}
     </div>
-
-    {#{{ render_esi(url('product', {})) }}#}
 {% endblock %}

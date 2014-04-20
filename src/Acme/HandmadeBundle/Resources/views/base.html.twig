@@ -21,70 +21,13 @@
     </head>
 
     <body id="home">
-
-        {# header #}
-        <div class="ui inverted page grid masthead segment">
-            <div class="column">
-                <div class="inverted secondary pointing ui menu">
-                    <div class="header item"><i class="home icon"></i>HandMade</div>
-                    <div class="right menu">
-                        <a class="item">Открытки</a>
-                        <a class="item">Игрушки</a>
-                        <a class="item">Пригласительные</a>
-                        <a class="item">Бонбоньерки</a>
-                        <a class="item"><i class="sign in icon"></i></a>
-                    </div>
-                </div>
-                <!--<img src="images/cat.png" class="ui medium image">-->
-                <img src="{{ asset('bundles/acmehandmade/images/cat.png') }}" class="ui medium image">
-
-                <div class="ui hidden transition information">
-                    <h1 class="ui inverted header">Творим с любовью!</h1>
-                    <p>Все оригинальные изделия, которые Вы здесь найдёте – это результат долгой и кропотливой ручной работы дизайнеров и мастеров, создающих поистине эксклюзивные вещи handmade.</p>
-                </div>
-            </div>
-        </div>
+        <!-- Main Menu -->
+        {{ render_esi(controller('AcmeHandmadeBundle:Default:mainMenu')) }}
 
         {% block body %}{% endblock %}
 
-        {# footer #}
-        <div class="ui inverted teal page grid segment">
-            <div class="ten wide column">
-                <div class="ui three column stackable grid">
-                    <div class="column">
-                        <div class="ui header">Категории</div>
-                        <div class="ui inverted link list">
-                            <a class="item">Открытки</a>
-                            <a class="item">Игрушки</a>
-                            <a class="item">Пригласительные</a>
-                            <a class="item">Бонбоньерки</a>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="ui header">FAQ</div>
-                        <div class="ui inverted link list">
-                            <a class="item">Как нас найти?</a>
-                            <a class="item">Как сделать заказ?</a>
-                            <a class="item">Способы доставки?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="six wide right floated aligned column">
-                <h3 class="ui header">Контакты</h3>
-                <addr>
-                    Украина, г.Черкассы <br>
-                    ул. Шевченка 425 <br>
-                </addr>
-                <p>(472) 11-22-33</p>
-                <p>(093) 11-22-333</p>
-
-                <i class="facebook sign icon"></i>
-                <i class="skype icon"></i>
-                <i class="twitter sign icon"></i>
-                <i class="vk icon"></i>
-            </div>
-        </div>
+        <!-- Footer -->
+        {{ render_esi(controller('AcmeHandmadeBundle:Default:footer')) }}
 
         {% block javascripts %}
             <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>

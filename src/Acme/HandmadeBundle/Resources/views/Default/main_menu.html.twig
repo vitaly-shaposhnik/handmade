@@ -1,0 +1,20 @@
+<div class="ui inverted page grid masthead segment">
+    <div class="column">
+        <div class="inverted secondary pointing ui menu">
+            <div class="header item"><a href="{{ path('acme_handmade_homepage') }}"><i class="home icon"></i>HandMade</a></div>
+            <div class="right menu">
+                {% for item in items %}
+                    <a class="item" href="{{ path('category_show', {'slug': item.slug}) }}">{{ item.name }}</a>
+                {% endfor %}
+                <a class="item"><i class="sign in icon"></i></a>
+            </div>
+        </div>
+        <!--<img src="images/cat.png" class="ui medium image">-->
+        <img src="{{ asset('bundles/acmehandmade/images/cat.png') }}" class="ui medium image">
+
+        <div class="ui hidden transition information">
+            <h1 class="ui inverted header">Творим с любовью!</h1>
+            <p>Все оригинальные изделия, которые Вы здесь найдёте – это результат долгой и кропотливой ручной работы дизайнеров и мастеров, создающих поистине эксклюзивные вещи handmade.</p>
+        </div>
+    </div>
+</div>

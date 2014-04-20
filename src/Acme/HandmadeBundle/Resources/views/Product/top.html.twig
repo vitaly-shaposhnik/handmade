@@ -1,0 +1,18 @@
+<div class="ui two wide column"></div>
+<div class="twelve wide column">
+    {% for block in blocks %}
+        <div class="ui three column center aligned stackable divided grid">
+            {% for product in block %}
+                <div class="column">
+                    <div class="ui icon header">
+                        <a href="{{ path('product_show', {'slug': product.slug}) }}" >
+                            <img src="{{ asset( product.getImagePath() ) }}" class="ui image ">
+                            {{ product.name }}
+                        </a>
+                    </div>
+                    <p><a class="ui teal right labeled icon button" href="#">{{ product.price }}UAH <i class="right long cart icon"></i></a></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

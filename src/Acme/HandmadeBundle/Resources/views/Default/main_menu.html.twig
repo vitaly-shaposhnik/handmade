@@ -6,7 +6,19 @@
                 {% for item in items %}
                     <a class="item" href="{{ path('category_show', {'slug': item.slug}) }}">{{ item.name }}</a>
                 {% endfor %}
-                <a class="item"><i class="sign in icon"></i></a>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <div class="ui pointing dropdown link item">
+                        <i class="icon user"></i>
+                        <div class="menu ui transition hidden">
+                            <a class="item" href="{{ path('fos_user_profile_show') }}"><i class="icon user"></i> {{ 'menu.profile.show'|trans({}, 'messages') }}</a>
+                            <a class="item" href="{{ path('fos_user_profile_edit') }}"><i class="icon wrench"></i> {{ 'menu.profile.edit'|trans({}, 'messages') }}</a>
+                            <a class="item" href="{{ path('fos_user_security_logout') }}"><i class="sign out icon"></i>Logout</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a class="item" href="{{ path('fos_user_security_login') }}"><i class="sign in icon"></i></a>
+                {% endif %}
             </div>
         </div>
         <!--<img src="images/cat.png" class="ui medium image">-->

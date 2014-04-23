@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\HandmadeBundle\Entity;
+namespace Acme\HandmadeBundle\Service;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Acme\HandmadeBundle\Entity\CartItem;
@@ -8,29 +8,24 @@ use Acme\HandmadeBundle\Entity\Product;
 
 class Cart
 {
+    /** @var Session */
+    protected $storage;
     /** @var string */
-    private $sessionName = 'userCart';
+    protected $sessionName;
     /** @var CartItem[] */
     private $products = array();
     /** @var int */
     private $sum = 0;
     /** @var int */
     private $productLimit = 10;
-    /** @var Session */
-    private $storage;
 
-    public function __construct()
+
+    public function __construct(Session $session, $sessionName = 'userCart')
     {
-        $this->storage = new Session();
-        $this->storage->start();
+        $this->storage = $session;
+        $this->sessionName = $sessionName;
 
-        $session = $this->storage->all();
-
-        if (empty($session[$this->sessionName])) {
-            $this->storage->set($this->sessionName, array(
-                'products' => array(),
-            ));
-        }
+//        $session = $this->storage->all();
     }
 
     public function clear() {
@@ -52,7 +47,9 @@ class Cart
      */
     public function getProducts()
     {
-        return $this->products;
+        $data = $this->storage->get($this->sessionName, array());
+
+        return isset($data['products']) ? $data['products'] : [];
     }
 
     /**
@@ -73,9 +70,26 @@ class Cart
 
             $data = $this->storage->get($this->sessionName, array());
             $data['productList'][$product->getId()] = $quantity;
+            $data['products'][$product->getId()] = $cartItem;
 
             $this->storage->set($this->sessionName, $data);
             $this->clearEmpty();
+        }
+    }
+
+    /**
+     * @param  $product     Product
+     * @param  $quantity    int
+     */
+    public function deleteProduct(Product $product)
+    {
+        $data = $this->storage->get($this->sessionName);
+
+        if (array_key_exists($product->getId(), $data['productList'])) {
+            unset($data['productList'][$product->getId()]);
+            unset($data['products'][$product->getId()]);
+
+            $this->storage->set($this->sessionName, $data);
         }
     }
 
@@ -103,6 +117,7 @@ class Cart
         foreach ($data['productList'] as $productId => $quantity) {
             if (!$quantity) {
                 unset($data['productList'][$productId]);
+                unset($data['products'][$productId]);
             }
         }
 
@@ -164,4 +179,4 @@ class Cart
 
         return $this->sum;
     }
-}
+} 

@@ -61,6 +61,10 @@
             <argument>Acme\HandmadeBundle\Entity\Product</argument>
             <argument>Acme\HandmadeBundle\DTO\Product</argument>
         </service>
+
+        <service id="acme.handmade.cart" class="Acme\HandmadeBundle\Service\Cart">
+            <argument type="service" id="session" />
+        </service>
     </services>
 
 </container>

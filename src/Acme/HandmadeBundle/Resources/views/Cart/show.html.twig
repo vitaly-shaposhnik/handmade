@@ -1,0 +1,13 @@
+{% extends 'AcmeHandmadeBundle::base.html.twig' %}
+
+{% block body -%}
+    <div class="ui page grid overview segment">
+        <div class="row">
+            <div class="column">
+                {% for product in products %}
+                    id={{ product.id }}, price={{ product.price }}, quantity={{ product.quantity }}<br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

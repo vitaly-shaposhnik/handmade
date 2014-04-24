@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="column">
-                        <p><a class="ui teal right labeled icon button" href="#">{{ entity.price }}UAH <i class="right long cart icon"></i></a></p>
+                        <p>{% include 'AcmeHandmadeBundle:Product:buy_button.html.twig' with {'product': entity} %}</p>
                         <p>{{ entity.description }}</p>
                     </div>
                 </div>

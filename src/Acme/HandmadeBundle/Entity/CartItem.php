@@ -10,6 +10,8 @@ class CartItem
     private $id;
     /** @var float */
     private $price;
+    /** @var string */
+    private $name;
     /** @var integer */
     private $quantity;
 
@@ -18,6 +20,7 @@ class CartItem
         if (array_key_exists('id', $data)) $this->setId($data['id']);
         if (array_key_exists('price', $data)) $this->setPrice($data['price']);
         if (array_key_exists('quantity', $data)) $this->setQuantity($data['quantity']);
+        if (array_key_exists('name', $data)) $this->setName($data['name']);
     }
 
     public function fromObject(Product $product, $quantity = 1)
@@ -25,6 +28,7 @@ class CartItem
         $this->setId($product->getId());
         $this->setPrice($product->getPrice());
         $this->setQuantity($quantity);
+        $this->setName($product->getName());
     }
 
     /**
@@ -73,5 +77,21 @@ class CartItem
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

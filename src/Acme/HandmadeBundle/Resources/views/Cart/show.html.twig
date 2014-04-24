@@ -3,10 +3,57 @@
 {% block body -%}
     <div class="ui page grid overview segment">
         <div class="row">
-            <div class="column">
-                {% for product in products %}
-                    id={{ product.id }}, price={{ product.price }}, quantity={{ product.quantity }}<br>
-                {% endfor %}
+            <div class="column ui segment">
+                {% if products|length > 0 %}
+                    <table class="ui large table segment">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% set tCount = 0 %}
+                            {% set tPrice = 0 %}
+                            {% for product in products %}
+                                {% set tCount = tCount + product.quantity %}
+                                {% set tPrice = tPrice + product.price %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.quantity }}</td>
+                                    <td>{{ product.price }}</td>
+                                    <td><a class="jsCartDeleteProduct" href="{{ path('cart_product_delete', {'id': product.id}) }}"><i class="close red icon link icon"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr><th>Кол-во товаров: <span class="jsTotalQuantity">{{ tCount }}</span></th>
+                                <th></th>
+                                <th>Сумма заказа: <span class="jsTotalSum">{{ tPrice }}</span>UAH</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="ui buttons">
+                        <a href="{{ path('cart_clear') }}" class="ui button">Очистить корзину</a>
+                        <div class="or"></div>
+                        <div class="ui positive button">Оформить заказ</div>
+                    </div>
+
+                {% else %}
+                    <div class="ui icon message">
+                        <i class="cart icon"></i>
+                        <div class="content">
+                            <div class="header">
+                                В вашей корзине еще нет товаров
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

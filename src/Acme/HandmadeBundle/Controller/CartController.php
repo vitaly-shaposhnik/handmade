@@ -22,7 +22,7 @@ class CartController extends Controller
         /** @var  $cart Cart */
         $cart = $this->get('acme.handmade.cart');
 
-        return array('products' => $cart->getProducts());
+        return array('products' => $cart->getCartProducts());
     }
 
     public function clearAction(Request $request)

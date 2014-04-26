@@ -5,6 +5,8 @@ namespace Acme\HandmadeBundle\Service;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Acme\HandmadeBundle\Entity\CartItem;
 use Acme\HandmadeBundle\Entity\Product;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 
 class Cart
 {
@@ -12,18 +14,24 @@ class Cart
     protected $storage;
     /** @var string */
     protected $sessionName;
+    /** @var ObjectManager */
+    protected $om;
+    /** @var ObjectRepository */
+    protected $repository;
     /** @var CartItem[] */
-    private $products = array();
+    protected $products = array();
     /** @var int */
-    private $sum = 0;
+    protected $sum = 0;
     /** @var int */
-    private $productLimit = 10;
+    protected $productLimit = 10;
 
 
-    public function __construct(Session $session, $sessionName = 'userCart')
+    public function __construct(Session $session, ObjectManager $om, $entityClass, $sessionName = 'userCart')
     {
         $this->storage = $session;
         $this->sessionName = $sessionName;
+        $this->om = $om;
+        $this->repository = $om->getRepository($entityClass);
 
 //        $session = $this->storage->all();
     }
@@ -43,10 +51,27 @@ class Cart
     }
 
     /**
-     * @return CartItem[]
+     * @return array
      */
     public function getProducts()
     {
+        $this->clearEmpty();
+        $data = $this->storage->get($this->sessionName, array());
+
+        $products = array();
+        if (!empty($data['productList'])) {
+            $products = $this->repository->findBy(array('id' => array_keys($data['productList'])));
+        }
+
+        return $products;
+    }
+
+    /**
+     * @return CartItem[]
+     */
+    public function getCartProducts()
+    {
+        $this->clearEmpty();
         $data = $this->storage->get($this->sessionName, array());
 
         return isset($data['products']) ? $data['products'] : [];
@@ -114,14 +139,16 @@ class Cart
         $data = $this->storage->get($this->sessionName);
 
         // товары
-        foreach ($data['productList'] as $productId => $quantity) {
-            if (!$quantity) {
-                unset($data['productList'][$productId]);
-                unset($data['products'][$productId]);
+        if (isset($data['productList']) && !empty($data['productList'])) {
+            foreach ($data['productList'] as $productId => $quantity) {
+                if (!$quantity) {
+                    unset($data['productList'][$productId]);
+                    unset($data['products'][$productId]);
+                }
             }
-        }
 
-        $this->storage->set($this->sessionName, $data);
+            $this->storage->set($this->sessionName, $data);
+        }
     }
 
     /**
@@ -171,7 +198,7 @@ class Cart
     public function getSum()
     {
         $this->sum = 0;
-        foreach ($this->getProducts() as $product) {
+        foreach ($this->getCartProducts() as $product) {
             if (!$product instanceof CartItem) continue;
 
             $this->sum += $product->getPrice();

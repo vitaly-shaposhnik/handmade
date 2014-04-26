@@ -50,6 +50,13 @@
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
 
+        <service id="acme.handmade.admin.order_entity" class="Acme\HandmadeBundle\Admin\OrderEntityAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Handmade" label="Order Entity" />
+            <argument/>
+            <argument>Acme\HandmadeBundle\Entity\OrderEntity</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
         <service id="acme.handmade.api.category" class="Acme\HandmadeBundle\Service\ApiCategoryService">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>Acme\HandmadeBundle\Entity\Category</argument>
@@ -64,6 +71,13 @@
 
         <service id="acme.handmade.cart" class="Acme\HandmadeBundle\Service\Cart">
             <argument type="service" id="session" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>Acme\HandmadeBundle\Entity\Product</argument>
+            <argument>userCart</argument>
+        </service>
+
+        <service id="acme.handmade.order_type" class="Acme\HandmadeBundle\Form\OrderType">
+            <tag name="form.type" alias="handmade_order" />
         </service>
     </services>
 

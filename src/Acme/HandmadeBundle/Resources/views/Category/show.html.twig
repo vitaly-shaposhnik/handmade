@@ -25,7 +25,7 @@
                                     {{ product.name }}
                                 </a>
                             </div>
-                            <p><a class="ui teal right labeled icon button" href="#">{{ product.price }}UAH <i class="right long cart icon"></i></a></p>
+                            <p>{% include 'AcmeHandmadeBundle:Product:buy_button.html.twig' with {'product': product} %}</p>
                         </div>
                     {% endfor %}
                 </div>

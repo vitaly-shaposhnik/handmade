@@ -2,9 +2,9 @@
 $(document).ready(function() {
 	var
 		slider = $('#slider'),
-		data = slider.data('slides'),// Params: imgUrl, linkUrl, title;
+		data = {},// Params: imgUrl, linkUrl, title;
 
-		slideCount = data.length,// количество слайдов
+		slideCount = 0,// количество слайдов
 		scrollingDuration = 1000,
 		waitingTime = 5000,
 
@@ -155,6 +155,12 @@ $(document).ready(function() {
 			});
 		};
 	// end of functions
+
+	if ( !slider.length )  return;
+
+	data = slider.data('slides');
+	if ( !data.length ) return;
+	slideCount = data.length;
 
 	init();
 	slider_SlideW = $('.Wrap_eSlide').width();

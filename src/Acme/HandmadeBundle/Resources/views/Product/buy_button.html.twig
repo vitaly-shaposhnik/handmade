@@ -1,0 +1,4 @@
+
+{% set url = path('cart_product_add', {'id': product.id}) %}
+
+<a class="ui teal right labeled icon button jsBuyButton" data-url="{{ url }}" href="#">{{ product.price }}UAH <i class="right long cart icon"></i></a>

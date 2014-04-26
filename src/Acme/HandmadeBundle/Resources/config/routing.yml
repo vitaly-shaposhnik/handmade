@@ -11,13 +11,47 @@ AcmeHandmadeBundle_product:
     prefix:   /product
 
 
-
 # API
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/doc
-
 acme_handmade_api:
     type: rest
     prefix: /api
     resource: "@AcmeHandmadeBundle/Resources/config/routing/api.yml"
+
+# Cart
+cart:
+    pattern:  /cart
+    defaults: { _controller: AcmeHandmadeBundle:Cart:show }
+
+cart_clear:
+    pattern:  /cart/clear
+    defaults: { _controller: AcmeHandmadeBundle:Cart:clear }
+
+cart_product_add:
+    pattern:  /cart/add-product/{id}
+    defaults: { _controller: AcmeHandmadeBundle:Cart:add }
+
+cart_product_delete:
+    pattern:  /cart/delete-product/{id}
+    defaults: { _controller: AcmeHandmadeBundle:Cart:delete }
+
+cart_sum:
+    pattern:  /cart/sum
+    defaults: { _controller: AcmeHandmadeBundle:Cart:sum }
+
+
+# Order
+order_new:
+    pattern: /order/new
+    defaults: { _controller: AcmeHandmadeBundle:Order:new }
+
+order_create:
+    pattern: /order/create
+    defaults: { _controller: AcmeHandmadeBundle:Order:create }
+
+order_complete:
+    pattern: /order/complete
+    defaults: { _controller: AcmeHandmadeBundle:Order:complete }
+
+order_fail:
+    pattern: /order/fail
+    defaults: { _controller: AcmeHandmadeBundle:Order:fail }

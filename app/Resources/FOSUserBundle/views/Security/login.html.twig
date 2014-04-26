@@ -1,0 +1,38 @@
+{% extends "AcmeHandmadeBundle::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body -%}
+    <div class="ui inverted page grid segment">
+        <div class="column">
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="ui inverted form error segment">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                {% if error %}
+                    <div class="ui error message">
+                        {#<div class="header">Action Forbidden</div>#}
+                        <p>{{ error|trans }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>{{ 'security.login.username'|trans }}</label>
+                        <input id="username" name="_username" value="{{ last_username }}" required="required" placeholder="user name" type="text">
+                    </div>
+                    <div class="field">
+                        <label>{{ 'security.login.password'|trans }}</label>
+                        <input id="password" name="_password" required="required" placeholder="password" type="password">
+                    </div>
+                </div>
+                <div class="inline field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                </div>
+                <input class="ui blue submit button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            </form>
+        </div>
+    </div>
+{% endblock body %}

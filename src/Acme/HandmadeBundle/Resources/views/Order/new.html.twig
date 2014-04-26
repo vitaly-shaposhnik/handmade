@@ -1,0 +1,141 @@
+{% extends 'AcmeHandmadeBundle::base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/acmehandmade/js/lib/jquery.maskedinput.min.js') }}"></script>
+    <script src="{{ asset('bundles/acmehandmade/js/order/new.js') }}"></script>
+{% endblock %}
+
+
+{% block body -%}
+    <div class="ui page grid overview segment">
+        <div class="row">
+            <div class="column ui segment">
+                <h1 class="ui header">Оформление заказа</h1>
+
+                {% if products|length > 0 %}
+                    <table class="ui large table segment">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% set tCount = 0 %}
+                        {% set tPrice = 0 %}
+                        {% for product in products %}
+                            {% set tCount = tCount + product.quantity %}
+                            {% set tPrice = tPrice + product.price %}
+                            <tr>
+                                <td>
+                                    {%  if product.image %}
+                                        <img class="ui small image" src="/{{ product.image }}">
+                                    {% endif %}
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.price }}</td>
+                                <td><a class="jsCartDeleteProduct" href="{{ path('cart_product_delete', {'id': product.id}) }}"><i class="close red icon link icon"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Кол-во товаров: <span class="jsTotalQuantity">{{ tCount }}</span></th>
+                            <th></th>
+                            <th>Сумма заказа: <span class="jsTotalSum">{{ tPrice }}</span>UAH</th>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                    {#<div class="ui buttons">#}
+                        {#<a href="{{ path('cart_clear') }}" class="ui button">Очистить корзину</a>#}
+                        {#<div class="or"></div>#}
+                        {#<a class="ui positive button" href="{{ path('order_new') }}" class="ui button">Оформить заказ</a>#}
+                    {#</div>#}
+
+                {% else %}
+                    <script>window.location.href = "{{ path('cart') }}";</script>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="column ui inverted">
+                <h2 class="ui header">Доставка</h2>
+
+                Информацию о доставке можно уточнить у наших менеджеров.
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="column ui inverted">
+                <h2 class="ui header">Информация о получателе</h2>
+
+                {{ form_start(form) }}
+                    <div class="ui form message">
+                        {#<div class="ui error">#}
+                            {#<div class="header">{{ form_errors(form) }}</div>#}
+                            {#<ul class="list">#}
+                                {#<li>Please enter your first name</li>#}
+                                {#<li>Please enter your last name</li>#}
+                            {#</ul>#}
+                        {#</div>#}
+                        <div class="three fields">
+                            <div class="field{% if form_errors(form.lastName) %} error{% endif %}">
+                                {{ form_label(form.lastName) }}
+                                {{ form_widget(form.lastName) }}
+                            </div>
+                            <div class="field{% if form_errors(form.firstName) %} error{% endif %}">
+                                {{ form_label(form.firstName) }}
+                                {{ form_widget(form.firstName) }}
+                            </div>
+                            <div class="field{% if form_errors(form.middleName) %} error{% endif %}">
+                                {{ form_label(form.middleName) }}
+                                {{ form_widget(form.middleName) }}
+                            </div>
+                        </div>
+
+                        <div class="two fields">
+                            <div class="field{% if form_errors(form.email) %} error{% endif %}">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email) }}
+                            </div>
+                        </div>
+
+                        <div class="two fields">
+                            <div class="field{% if form_errors(form.phoneNumber) %} error{% endif %}">
+                                {{ form_label(form.phoneNumber) }}
+                                {{ form_widget(form.phoneNumber) }}
+                            </div>
+                        </div>
+
+                        <div class="field{% if form_errors(form.address) %} error{% endif %}">
+                            {{ form_label(form.address) }}
+                            {{ form_widget(form.address) }}
+                        </div>
+
+                        <div class="inline field{% if form_errors(form.termsAgree) %} error{% endif %}">
+                            <div class="ui checkbox">
+                                {{ form_widget(form.termsAgree) }}
+                                {{ form_label(form.termsAgree) }}
+                            </div>
+                        </div>
+
+                        {{ form_widget(form.submit) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

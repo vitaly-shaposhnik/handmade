@@ -31,6 +31,11 @@ class OrderStatus
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="OrderEntity", mappedBy="order_status")
+     */
+    private $orders;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
@@ -84,5 +89,26 @@ class OrderStatus
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

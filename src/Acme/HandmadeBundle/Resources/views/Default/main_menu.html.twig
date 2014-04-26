@@ -11,6 +11,7 @@
                     <div class="ui pointing dropdown link item">
                         <i class="icon user"></i>
                         <div class="menu ui transition hidden">
+                            <div class="item">Здравствуйте {{ app.user.username }}</div>
                             <a class="item" href="{{ path('fos_user_profile_show') }}"><i class="icon user"></i> {{ 'menu.profile.show'|trans({}, 'messages') }}</a>
                             <a class="item" href="{{ path('fos_user_profile_edit') }}"><i class="icon wrench"></i> {{ 'menu.profile.edit'|trans({}, 'messages') }}</a>
                             <a class="item" href="{{ path('fos_user_security_logout') }}"><i class="sign out icon"></i>Logout</a>

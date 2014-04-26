@@ -17,6 +17,7 @@ acme_handmade_api:
     prefix: /api
     resource: "@AcmeHandmadeBundle/Resources/config/routing/api.yml"
 
+# Cart
 cart:
     pattern:  /cart
     defaults: { _controller: AcmeHandmadeBundle:Cart:show }
@@ -36,3 +37,21 @@ cart_product_delete:
 cart_sum:
     pattern:  /cart/sum
     defaults: { _controller: AcmeHandmadeBundle:Cart:sum }
+
+
+# Order
+order_new:
+    pattern: /order/new
+    defaults: { _controller: AcmeHandmadeBundle:Order:new }
+
+order_create:
+    pattern: /order/create
+    defaults: { _controller: AcmeHandmadeBundle:Order:create }
+
+order_complete:
+    pattern: /order/complete
+    defaults: { _controller: AcmeHandmadeBundle:Order:complete }
+
+order_fail:
+    pattern: /order/fail
+    defaults: { _controller: AcmeHandmadeBundle:Order:fail }

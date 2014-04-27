@@ -15,11 +15,17 @@ class LoadUserData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $user = new User();
-
         $user->setEmail('test.admin@gmail.com');
         $user->setUsername('admin');
         $user->setPlainPassword('111111');
         $user->setSuperAdmin(true);
+        $user->setEnabled(true);
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('guest@guest');
+        $user->setUsername('guest');
+        $user->setPlainPassword(uniqid(rand(111111, 999999), true));
         $user->setEnabled(true);
         $manager->persist($user);
 

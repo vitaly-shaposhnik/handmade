@@ -76,8 +76,10 @@ class OrderController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $user = $em->getRepository('AcmeHandmadeBundle:User')->findOneBy(array('username' => 'guest'));
+
         $entity->setTotalPrice($cart->getSum());
-        $entity->setUid(1);
+        $entity->setUid($user ? $user->getId() : 0);
         $entity->setOrderStatus($orderStatus);
 
         $products = array();

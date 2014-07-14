@@ -1,5 +1,15 @@
 {% extends 'AcmeHandmadeBundle::base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/acmehandmade/fresco-1.4.11-light/js/fresco/fresco.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/acmehandmade/fresco-1.4.11-light/css/fresco/fresco.css') }}"/>
+{% endblock %}
+
 {% block body -%}
     <div class="ui page grid overview segment">
         <div class="row">
@@ -15,6 +25,39 @@
 
                 <div class="ui two column aligned stackable divided grid">
                     <div class="column center aligned">
+
+
+                        <div class="ui galery-medium images">
+                            <a href='{{ asset( entity.getImagePath() ) }}'
+                               class='fresco'
+                               data-fresco-group='example'
+                               data-fresco-caption="{{ entity.name }}">
+                                <img src="{{ asset( entity.getImagePath() ) }}">
+                            </a>
+                            <a href='{{ asset( entity.getImagePath() ) }}'
+                               class='fresco' data-fresco-group='example' data-fresco-caption="{{ entity.name }}">
+                                <img src="{{ asset( entity.getImagePath() ) }}">
+                            </a>
+                            <a href='{{ asset( entity.getImagePath() ) }}'
+                               class='fresco' data-fresco-group='example' data-fresco-caption="{{ entity.name }}">
+                                <img src="{{ asset( entity.getImagePath() ) }}">
+                            </a>
+                            <a href='{{ asset( entity.getImagePath() ) }}'
+                               class='fresco' data-fresco-group='example' data-fresco-caption="{{ entity.name }}">
+                                <img src="{{ asset( entity.getImagePath() ) }}">
+                            </a>
+                        </div>
+
+                        <a href='{{ asset('bundles/acmehandmade/fresco-1.4.11-light/example/images/frans_hals.jpg') }}'
+                           class='fresco'
+                           data-fresco-group='example'
+                           data-fresco-caption="Frans Hals, Banquet of the Officers of the St George Civic Guard, 1627">
+                            <img src='{{ asset('bundles/acmehandmade/fresco-1.4.11-light/example/images/thumbnails/frans_hals.jpg') }}' alt=''/>
+                        </a>
+
+
+
+
                         <div class="ui images" style="margin-bottom: 10px;">
                             <img src="{{ asset( entity.getImagePath() ) }}" class="ui image ">
                         </div>
@@ -31,6 +74,47 @@
                         <p>{% include 'AcmeHandmadeBundle:Product:buy_button.html.twig' with {'product': entity} %}</p>
                         <p>{{ entity.description }}</p>
                     </div>
+                </div>
+
+
+
+
+
+                <div id='page'>
+
+                    <h1>Fresco</h1>
+                    <p>This page demonstrates the installation of <a href='http://www.frescojs.com' target='_blank'>Fresco</a>. It can be used as an example when installing Fresco on your domain.</p>
+
+                    <div class='demonstrations'>
+
+                        <a href='{{ asset('bundles/acmehandmade/fresco-1.4.11-light/example/images/frans_hals.jpg') }}'
+                           class='fresco'
+                           data-fresco-group='example'
+                           data-fresco-caption="Frans Hals, Banquet of the Officers of the St George Civic Guard, 1627">
+                            <img src='{{ asset('bundles/acmehandmade/fresco-1.4.11-light/example/images/thumbnails/frans_hals.jpg') }}' alt=''/>
+                        </a>
+
+                        <a href='images/reynolds.jpg'
+                           class='fresco'
+                           data-fresco-group='example'
+                           data-fresco-caption="Sir Joshua Reynolds, The Countess of Dartmouth, 1757">
+                            <img src='images/thumbnails/reynolds.jpg' alt=''/>
+                        </a>
+
+
+                    </div>
+
+                    <h2>What's next?</h2>
+                    <p>See the <a href='http://www.frescojs.com/documentation' target='_blank'>documentation</a> for detailed installation instructions and examples on how to get started.</p>
+
+                    <h2>Commercial use</h2>
+                    <p>A <a href='http://www.frescojs.com/download' target='_blank'>licensed</a> version is available for commercial use, this version has more options and does not have a watermark applied.</p>
+
+                    <p class='resources'>
+                        <strong>Get feedback</strong>: <a href='http://forum.nickstakenburg.com' target='_blank'>Support Forum</a><br/>
+                        <strong>Follow</strong>: <a href='http://twitter.com/frescojs' target='_blank'>@frescojs</a>
+                    </p>
+
                 </div>
             </div>
         </div>

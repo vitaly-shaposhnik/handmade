@@ -18,6 +18,11 @@ body {
   min-width: 320px;
 }
 
+.ui.galery-medium.images .image, .ui.galery-medium.images img, .ui.galery-medium.image {
+    width: 220px;
+    font-size: 0.9rem;
+}
+
 /*******************************
           UI Overrides
 *******************************/
